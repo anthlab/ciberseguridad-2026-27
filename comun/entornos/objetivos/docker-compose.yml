@@ -1,0 +1,80 @@
+# Objetivos vulnerables del laboratorio xest — PPS (construir/corregir) + HE (atacar)
+# Uso:  docker compose up -d   ·   docker compose ps   ·   docker compose down
+# NO exponer a Internet. Solo VLAN de aula aislada.
+name: xest-objetivos
+
+services:
+  # --- HE UT5/UT8 · PPS UT4: aplicación web deliberadamente vulnerable, moderna ---
+  juice-shop:
+    image: bkimminich/juice-shop:v17.1.1@sha256:9e437b456e444ff001d1663e4f6f05c796fe02f1058dd2651d6791a15b43dfeb        # fijar versión: reproducibilidad en clase
+    container_name: juice-shop
+    ports: ["127.0.0.1:3000:3000"]
+    restart: unless-stopped
+
+  # --- PPS UT4 · HE UT8: clásico con niveles de dificultad (low/medium/high) ---
+  dvwa:
+    image: ghcr.io/digininja/dvwa@sha256:1af2cedda7617e4d22937e61c98bbf71d8b74b98e46f5e41dd6aa0a5183311b0
+    container_name: dvwa
+    ports: ["127.0.0.1:8081:80"]
+    environment:
+      - DB_SERVER=dvwa-db
+      - DB_DATABASE=dvwa
+      - DB_USER=dvwa
+      - DB_PASSWORD=xest-lab-dvwa
+    depends_on:
+      dvwa-db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  dvwa-db:
+    image: mariadb:10.11@sha256:7db29378d4fdab73f8123bbc2b48905c90d1a4b00cf848b028f1e81e623257f2
+    environment:
+      MARIADB_ROOT_PASSWORD: xest-lab-root
+      MARIADB_DATABASE: dvwa
+      MARIADB_USER: dvwa
+      MARIADB_PASSWORD: xest-lab-dvwa
+    volumes:
+      - dvwa-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  # --- HE UT6: servicios explotables para interceptación/explotación guiada ---
+  #     VulnLab casero: un servicio HTTP en claro + login sin HSTS para el MITM.
+  vuln-web:
+    image: vulnerables/web-dvwa:latest
+    container_name: vuln-web
+    ports: ["127.0.0.1:8082:80"]
+    restart: unless-stopped
+
+  # --- PPS UT4/UT5/UT8: el "portal SOC de xest" que el alumnado construye y bastiona ---
+  #     Arranca como app mínima; el alumnado la endurece a lo largo del módulo.
+  portal-soc:
+    image: nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+    container_name: portal-soc
+    ports: ["127.0.0.1:8080:80"]
+    volumes:
+      - ./portal-soc/html:/usr/share/nginx/html:ro
+      - ./portal-soc/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+
+  # --- HE UT8 / PPS UT4: API con IDOR y SQLi para el examen manual WSTG ---
+  #     bWAPP: amplio catálogo OWASP para prácticas dirigidas.
+  bwapp:
+    image: raesene/bwapp:latest
+    container_name: bwapp
+    ports: ["127.0.0.1:8083:80"]
+    restart: unless-stopped
+
+# Notas:
+# - Fijamos etiquetas de versión donde se puede: una demo que cambia de comportamiento
+#   entre clases es una demo rota. Si una imagen solo ofrece :latest, anotar el digest
+#   con `docker inspect` tras la primera prueba de humo.
+# - portal-soc/ contiene el HTML y la config nginx de partida (deliberadamente floja);
+#   PPS UT5 sustituye nginx.conf por baseline/nginx-hardening.conf del repo.
+
+volumes:
+  dvwa-data:

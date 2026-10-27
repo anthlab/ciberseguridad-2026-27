@@ -1,0 +1,13 @@
+.md-typeset .grid.cards > ul > li { border-radius: .6rem; }
+.md-typeset .modulo-dia { opacity: .7; font-size: .8rem; }
+.progreso-ut { margin: 0 0 1.2rem; }
+.progreso-ut button {
+  cursor: pointer; border: 1px solid var(--md-accent-fg-color); color: var(--md-accent-fg-color);
+  background: transparent; border-radius: .4rem; padding: .35rem .8rem; font-size: .75rem;
+}
+.progreso-ut button.hecha { background: var(--md-accent-fg-color); color: var(--md-accent-bg-color, #fff); }
+.progreso-modulo { display: block; margin: .4rem 0 1rem; }
+.progreso-modulo .barra { height: .5rem; border-radius: .25rem; background: var(--md-default-fg-color--lightest); overflow: hidden; }
+.progreso-modulo .barra > span { display: block; height: 100%; background: var(--md-accent-fg-color); }
+.progreso-modulo small { opacity: .75; }
+.md-nav__link.ut-hecha::after { content: " ✓"; color: var(--md-accent-fg-color); }

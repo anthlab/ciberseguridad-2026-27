@@ -1,0 +1,14 @@
+# Volcado de credenciales de LABORATORIO — xest.local (SINTÉTICO, sin datos reales)
+# Formato secretsdump/pwdump:  usuario:RID:LMhash:NThash:::
+# El LM está deshabilitado (aad3b435... = "sin LM"). Se ataca el NT con hashcat -m 1000.
+# Extraer solo el NT:   cut -d: -f4 hashes-lab.txt > nt.txt
+# Uso previsto: HE-E13 (ataque a credenciales). Solo VLAN de laboratorio.
+administrador:500:aad3b435b51404eeaad3b435b51404ee:cd79a36b82511c5f839b0421af58a495:::
+jgarcia:1103:aad3b435b51404eeaad3b435b51404ee:b963c57010f218edc2cc3c229b5e4d0f:::
+mlopez:1104:aad3b435b51404eeaad3b435b51404ee:31c72c210ecc03d1eae94fa496069448:::
+rroig:1105:aad3b435b51404eeaad3b435b51404ee:f773c5db7ddebefa4b0dae7ee8c50aea:::
+pmartin:1106:aad3b435b51404eeaad3b435b51404ee:45b6dba58106dc8879376e5cecc9d633:::
+svc-sql:1201:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::
+svc-backup:1202:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::
+amendez:1108:aad3b435b51404eeaad3b435b51404ee:4f593f486753bb636ee30b1e27419d25:::
+invitado:1109:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::

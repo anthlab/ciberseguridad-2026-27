@@ -1,0 +1,7 @@
+# Volcado /etc/shadow de LABORATORIO — host Linux pivote.xest.local (SINTÉTICO)
+# Hashes sha512crypt ($6$). Se atacan con hashcat -m 1800  (o john --format=sha512crypt).
+# Segundo tipo de hash para MEDIR la diferencia de coste frente al NTLM (rápido) del volcado AD.
+# Uso previsto: HE-E13 (comparación de coste por algoritmo). Solo VLAN de laboratorio.
+svc-backup:$6$xESTlab01$SgsTnjDiR0uNuZjJ7mTYo4gIp.x1ZmqnWqTQhicys.alsuKE0ktRj.W7LcWB36iW33iPqMYN6InT49da8kwvZ1:19700:0:99999:7:::
+deploy:$6$xESTlab02$AI81V0RHkhbB1gJ0M4B3erc3aSf.pegXlYjFwfKi0Pil4pTKAPYc4/fdPRfWbr/bbtggn4BjoVVO7TMgcRZ36/:19700:0:99999:7:::
+root:$6$xESTlab03$5.5t1v6w.qmZlrDQxF8/epM028M7ejV946.DT8VzoJmUt1xGVSYnTH723ZmupwU9Ffu67MnZd/0W75/7xQqAJ/:19700:0:99999:7:::

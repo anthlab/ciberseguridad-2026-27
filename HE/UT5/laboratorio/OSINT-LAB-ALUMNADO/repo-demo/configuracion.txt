@@ -1,0 +1,2 @@
+usuario=kestrel_ova
+marcador=ELIMINADO_DEL_ESTADO_ACTUAL

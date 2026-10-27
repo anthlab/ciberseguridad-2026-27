@@ -1,0 +1,4 @@
+id,alias,nombre,correo,fecha,fuente,nota
+p01,kestrel_ova,Óscar Valcárcel Aínsa,ova.kestrel@mail.xest.example,2026-09-20,foro.xest.example/perfil/p01,perfil ficticio actual
+p02,oscar_va,Óscar Valcárcel Aínsa,oscar@otra.example,2026-09-22,otra.example/p02,homónimo de otra entidad sin vínculo probado
+p03,kestrel_ova,Perfil antiguo,,2014-05-10,archivo.xest.example/p03,alias compartido sin correo ni enlace al perfil actual

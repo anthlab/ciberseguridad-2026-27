@@ -1,0 +1,13 @@
+Category,Location,Name,Command,Signed,Enabled,Timestamp
+Logon,HKCU\Software\Microsoft\Windows\CurrentVersion\Run,WindowsUpdate,C:\Users\admin\AppData\Local\Temp\svchost32.exe,No,Yes,2027-01-14 10:28:11
+Logon,HKLM\Software\Microsoft\Windows\CurrentVersion\Run,SecurityHealth,C:\Windows\System32\SecurityHealthSystray.exe,Yes,Yes,2025-11-02 09:14:00
+Logon,HKLM\Software\Microsoft\Windows\CurrentVersion\Run,OneDrive,C:\Users\admin\AppData\Local\Microsoft\OneDrive\OneDrive.exe /background,Yes,Yes,2025-11-02 09:15:22
+Task,\Microsoft\Windows\UpdateOrchestrator\SysHealth,SysHealth,C:\Users\admin\AppData\Local\Temp\svchost32.exe,No,Yes,2027-01-14 10:28:14
+Task,\Microsoft\Windows\UpdateOrchestrator\Reboot,Reboot,%systemroot%\system32\usoclient.exe StartReboot,Yes,Yes,2025-11-02 09:10:00
+Service,HKLM\System\CurrentControlSet\Services\WinDefend,WinDefend,C:\ProgramData\Microsoft\Windows Defender\platform\MsMpEng.exe,Yes,Yes,2025-11-02 09:09:00
+
+# Dataset de laboratorio IC UT6. Salida normalizada de Velociraptor
+# (artefactos Windows.Sysinternals.Autoruns / Windows.System.TaskScheduler).
+# Dos entradas SIN firmar, recien creadas el 2027-01-14 10:28 y apuntando a
+# %LOCALAPPDATA%\Temp\svchost32.exe -> persistencia del atacante (T1547.001 + T1053.005).
+# El resto son entradas legitimas del sistema base (firmadas, de 2025-11).

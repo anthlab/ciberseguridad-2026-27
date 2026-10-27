@@ -1,0 +1,17 @@
+# Salida de: vol -f memoria.raw windows.netscan
+# Dataset de laboratorio IC UT6. Busca la conexion saliente del proceso malicioso.
+
+Offset(P)        Proto  LocalAddr        LocalPort  ForeignAddr      ForeignPort  State        PID    Owner           Created
+0x8e0b9a11c010   TCPv4  10.10.10.50      49712      10.10.10.66      4444         ESTABLISHED  4812   svchost32.exe   2027-01-14 10:25:58
+0x8e0b9a12d010   TCPv4  10.10.10.50      3389       10.10.10.66      51044        ESTABLISHED  -      -               2027-01-14 10:20:55
+0x8e0b9a13e010   TCPv4  10.10.10.50      49688      10.10.10.66      8080         CLOSED       3120   powershell.exe  2027-01-14 10:24:07
+0x8e0b9a14f010   TCPv4  10.10.10.50      139        0.0.0.0          0            LISTENING    4      System          2027-01-14 07:58:11
+0x8e0b9a150010   TCPv4  10.10.10.50      445        0.0.0.0          0            LISTENING    4      System          2027-01-14 07:58:11
+0x8e0b9a161010   TCPv4  0.0.0.0          3389       0.0.0.0          0            LISTENING    1104   svchost.exe     2027-01-14 07:58:15
+0x8e0b9a172010   TCPv4  10.10.10.50      49201      10.10.10.20      443          ESTABLISHED  812    svchost.exe     2027-01-14 08:01:33
+
+# Pistas:
+#  - 10.10.10.50:49712 -> 10.10.10.66:4444  svchost32.exe (PID 4812): canal C2 (T1571, puerto no estandar 4444).
+#  - 10.10.10.50:3389 <- 10.10.10.66:51044  : sesion RDP entrante desde la Kali del atacante (10.10.10.66).
+#  - 10.10.10.50:49688 -> 10.10.10.66:8080  powershell.exe: descarga del primer estadio (a.ps1 / svchost32.exe).
+#  - 10.10.10.66 es la estacion atacante de la VLAN de laboratorio (misma que uso HE).

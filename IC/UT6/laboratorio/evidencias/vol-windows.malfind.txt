@@ -1,0 +1,23 @@
+# Salida (resumida) de: vol -f memoria.raw windows.malfind
+# Dataset de laboratorio IC UT6. malfind localiza regiones de memoria con permisos
+# de escritura+ejecucion (RWX / PAGE_EXECUTE_READWRITE) sin respaldo en disco:
+# la firma clasica de codigo inyectado (T1055).
+
+PID    Process         Start VPN          End VPN            Tag    Protection                Hexdump / Disasm
+3120   powershell.exe  0x1f3a0000         0x1f3a3fff         VadS   PAGE_EXECUTE_READWRITE    4d 5a 90 00 03 00 00 00   MZ......
+                                                                                             (cabecera MZ en region RWX ->
+                                                                                              PE reflejado en memoria: el
+                                                                                              download cradle a.ps1)
+4812   svchost32.exe   0x00400000         0x0041ffff         VadS   PAGE_EXECUTE_READWRITE    fc 48 83 e4 f0 e8 c0 00   .H......
+                                                                                             (shellcode x64: 'fc 48 83 e4 f0'
+                                                                                              = cls/and rsp, patron de stub
+                                                                                              de Meterpreter/beacon)
+
+# Interpretacion:
+#  - En powershell.exe (3120): un PE (cabecera MZ) reflejado en memoria = el implante cargado
+#    en memoria sin tocar disco en su forma final.
+#  - En svchost32.exe (4812): shellcode que empieza por 'fc 48 83 e4 f0 e8 c0 00 00 00' —
+#    prologo tipico del stub reverse_tcp x64. Confirma inyeccion / beacon.
+#  Volcar la region para AF (analisis forense en profundidad):
+#    vol -f memoria.raw windows.vadinfo --pid 4812 --dump
+#    (IC define el uso legal y la cadena de custodia; AF analiza el binario a fondo.)

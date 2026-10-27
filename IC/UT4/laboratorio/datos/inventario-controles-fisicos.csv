@@ -1,0 +1,11 @@
+control,zona,tipo,telemetria,integrado_soc,evento_fisico,alerta_logica_esperada
+Lector de tarjeta puerta principal,oficinas,control_acceso,syslog key=value,si,door_open/badge_denied,Acceso fuera de horario o denegaciones repetidas
+Lector de tarjeta puerta CPD,cpd,control_acceso,syslog key=value,si,door_open/badge_denied,Acceso no identificado al CPD
+Sensor apertura de rack rackA,cpd,sensor_intrusion,syslog key=value,si,rack_open,Apertura de rack fuera de horario
+Camara CPD cam-cpd-02,cpd,cctv,evento tamper/senal,si,cctv_signal_lost,Perdida de senal = posible manipulacion
+Control USB estaciones SOC (EDR),soc,edr_dispositivo,syslog key=value,si,usb_insert,USB no autorizado en estacion del SOC
+Torno de entrada torno-1,oficinas,control_acceso,evento anti-tailgating,si,tailgating,Paso de dos personas con una sola tarjeta
+Sensor de temperatura CPD,cpd,sensor_ambiental,SNMP,NO,,
+Detector de humo CPD,cpd,sensor_ambiental,contacto seco,NO,,
+Lector de tarjeta sala de comunicaciones,comunicaciones,control_acceso,syslog key=value,NO,,
+Camara recepcion cam-rec-01,recepcion,cctv,evento tamper/senal,NO,,

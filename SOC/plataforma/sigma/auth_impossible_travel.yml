@@ -1,0 +1,32 @@
+title: Impossible travel — dos autenticaciones incompatibles geográficamente
+id: 5c1a0f10-6a4a-4e6f-8f2d-b2e0f8a8f005
+status: experimental
+description: |
+  Detecta dos autenticaciones exitosas del mismo usuario desde países
+  distintos en un intervalo tan corto que resulta físicamente imposible
+  (por ejemplo, ES → JP en menos de 60 min). Indicador de token robado,
+  credential stuffing con éxito o AiTM (adversary-in-the-middle).
+author: SOC de xest
+date: 2026/07/19
+references:
+  - https://attack.mitre.org/techniques/T1078/004/
+tags:
+  - attack.initial_access
+  - attack.persistence
+  - attack.t1078.004
+logsource:
+  product: cloud
+  service: auth
+detection:
+  auth_success:
+    result: 'success'
+  aggregation:
+    countdistinct(country) by user: '>= 2'
+    timeframe: '60m'
+    max_distance_km: '> 3000'
+  condition: auth_success and aggregation
+falsepositives:
+  - Uso de VPN comercial o corporativa que salta geolocalización
+  - Cuentas de servicio con actividad multi-región legítima
+  - Directivos con viajes internacionales confirmados por RRHH
+level: high

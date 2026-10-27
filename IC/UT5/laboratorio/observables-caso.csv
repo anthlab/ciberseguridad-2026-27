@@ -1,0 +1,12 @@
+dataType,data,tlp,pap,ioc,tags,mensaje
+ip,185.220.101.47,AMBER,AMBER,true,"c2,exfil","Servidor C2: recibe la baliza del portal y los 42 MB del servidor de ficheros"
+domain,update-cdn-xest.link,AMBER,AMBER,true,"c2,typosquat","Dominio de mando y control; se hace pasar por un CDN de actualizaciones"
+url,http://portal-soc.xest.local/uploads/status.php,AMBER,AMBER,true,"webshell","Webshell subida al portal a las 08:19"
+hash,d41f8c9a2b7e6350f1a4c8d9b2e5760a3c9f1d2e8b4a6705c3e9f8d1a2b7c604,RED,RED,true,"webshell,sha256","SHA-256 de status.php (webshell del portal)"
+hash,7b3e9a1c5d2f8046b1e4c7a0d3f69b2e,RED,RED,true,"webshell,md5","MD5 de status.php"
+hash,a7c4e91f2d8b6350f9a1c4d7b0e3968a2c5f1d4e7b8a0c3d6f9b2e5a8c1d4f70,RED,RED,true,"loader,persistencia","SHA-256 del binario lanzado por svc-update.service en ws-admin"
+filename,/var/www/html/uploads/status.php,AMBER,AMBER,true,"webshell","Ruta de la webshell en el portal"
+mail,soporte@update-cdn-xest.link,GREEN,GREEN,false,"phishing","Remitente del correo de entrada; contrastar con el buzon del simulacro"
+user-account,jadmin,AMBER,AMBER,false,"cuenta-comprometida","Cuenta con exito de fuerza bruta a las 09:02 en ws-admin"
+user-account,svc-update,AMBER,AMBER,true,"persistencia","Cuenta de administrador creada por el atacante en ws-admin"
+ip,10.10.10.100,GREEN,GREEN,false,"origen-lab","Estacion del atacante (equipo HE) en la VLAN de laboratorio"

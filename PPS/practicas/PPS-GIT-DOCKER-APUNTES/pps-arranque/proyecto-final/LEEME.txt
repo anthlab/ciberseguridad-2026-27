@@ -1,0 +1,6 @@
+PPS — Arranque Git, GitHub y Docker — 6 de octubre de 2026
+Proyecto inicial: una página HTML. Abre index.html en tu navegador.
+El profesor os guiará para crear Git, publicar en GitHub y escribir Dockerfile.
+No hay que programar Python; lo utilizará la imagen del contenedor.
+La carpeta evidencias está excluida de Git.
+El servidor es didáctico, no un despliegue de producción.

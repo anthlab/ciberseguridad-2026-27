@@ -1,0 +1,33 @@
+# Objetivos vulnerables AVANZADOS — se levantan BAJO DEMANDA (pesan más que el básico).
+# Complementan a docker-compose.yml (Juice Shop, DVWA, bWAPP, portal-soc).
+# Uso:  docker compose -f docker-compose-avanzado.yml up -d
+#       docker compose -f docker-compose-avanzado.yml down
+# NO exponer a Internet. Solo VLAN de aula aislada.
+#
+# Primera vez: `docker pull` de cada imagen para verificar disponibilidad y fijar el digest.
+name: xest-objetivos-avanzado
+
+services:
+  # --- HE UT8 / lecciones guiadas de OWASP Top 10 (web) ---
+  webgoat:
+    image: webgoat/webgoat:latest      # OWASP WebGoat + WebWolf (oficial)
+    container_name: webgoat
+    ports:
+      - "127.0.0.1:8085:8080"     # WebGoat  -> http://webgoat.xest.local:8085/WebGoat
+      - "127.0.0.1:9095:9090"     # WebWolf  -> http://webgoat.xest.local:9095/WebWolf
+    environment:
+      - TZ=Europe/Madrid
+    restart: unless-stopped
+
+  # --- HE UT8 / seguridad de APIs REST (lo que Juice Shop no cubre a fondo) ---
+  vampi:
+    image: erev0s/vampi:latest         # VAmPI: API REST deliberadamente vulnerable (OWASP API Top 10)
+    container_name: vampi
+    ports:
+      - "127.0.0.1:8086:5000"     # http://vampi.xest.local:8086  (arranca en modo vulnerable por defecto)
+    restart: unless-stopped
+
+# Objetivos que NO van aquí porque son multi-contenedor o VM (ver README-avanzado.md):
+#   - crAPI (OWASP): tiene su propio docker-compose (varios servicios). Clonar su repo.
+#   - Metasploitable 2/3: máquina virtual completa (VirtualBox/Vagrant), no imagen única.
+#   - VulnHub / HackTheBox / TryHackMe: descargas o plataformas online autorizadas.

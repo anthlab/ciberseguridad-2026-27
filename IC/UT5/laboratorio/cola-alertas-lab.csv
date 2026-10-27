@@ -1,0 +1,21 @@
+id,hora,fuente,regla,activo,ip_activo,src_ip,indicador,resumen
+A01,07:55,Wazuh,45023-defender-update,ws-user01,10.10.10.41,-,-,Windows Defender actualiza firmas de deteccion
+A02,08:03,Suricata,ET SCAN Nessus,varios,10.10.10.0/24,10.10.10.20,10.10.10.20,Escaneo de vulnerabilidades desde el host del SOC
+A03,08:12,Suricata,ET WEB_SERVER PHP upload attempt,portal-soc,10.10.10.10,10.10.10.100,POST /uploads/,Intento de subida de fichero al portal
+A04,08:15,Wazuh,530-high-io,srv-files,10.10.10.50,-,-,Pico de E/S por trabajo de copia nocturna rsync
+A05,08:19,Wazuh,554-new-webfile,portal-soc,10.10.10.10,10.10.10.100,/var/www/html/uploads/status.php,Nuevo fichero PHP creado en directorio de subidas del portal
+A06,08:22,Wazuh,60204-vpn-login,vpn,10.10.10.1,203.0.113.24,mlopez,Inicio de sesion VPN de mlopez desde rango corporativo en horario laboral
+A07,08:24,Suricata,ET MALWARE HTTP C2 beacon,portal-soc,10.10.10.10,10.10.10.10,185.220.101.47,Baliza HTTP periodica hacia IP externa desde el portal
+A08,08:27,Wazuh,50701-cert-renew,portal-soc,10.10.10.10,-,-,Renovacion automatica de certificado TLS del portal
+A09,08:31,Wazuh,52002-dns-query,portal-soc,10.10.10.10,10.10.10.10,update-cdn-xest.link,Consulta DNS a dominio externo poco frecuente desde el portal
+A10,08:36,Suricata,ET POLICY Self-signed cert,soc,10.10.10.20,10.10.10.20,-,Certificado autofirmado en servicio interno del SOC
+A11,08:48,Suricata,ET SCAN SYN sweep,varios,10.10.10.0/24,10.10.10.100,10.10.10.100,Barrido SYN a varios hosts desde estacion no inventariada
+A12,09:02,Wazuh,5763-ssh-bruteforce-success,ws-admin,10.10.10.31,10.10.10.100,jadmin,Exito de fuerza bruta SSH tras 200 intentos sobre cuenta jadmin
+A13,09:10,Wazuh,2902-apt-upgrade,soc,10.10.10.20,-,root,Actualizacion de paquetes apt en ventana de mantenimiento
+A14,09:14,Wazuh,31151-web-404-burst,portal-soc,10.10.10.10,10.10.10.100,404 x120,Rafaga de 404 compatible con enumeracion de directorios en el portal
+A15,09:20,Suricata,ET EXFIL large outbound POST,srv-files,10.10.10.50,10.10.10.50,185.220.101.47,POST saliente de 42 MB hacia IP externa desde el servidor de ficheros
+A16,09:28,Wazuh,18107-account-lockout,ws-user01,10.10.10.41,10.10.10.41,aperez,Bloqueo de cuenta aperez tras 5 fallos de autenticacion
+A17,09:35,Suricata,ET EXPLOIT SMB RCE attempt,ws-user01,10.10.10.41,10.10.10.100,MS17-010,Intento de explotacion SMB contra estacion parcheada (rechazado)
+A18,09:41,Wazuh,592-new-systemd-service,ws-admin,10.10.10.31,-,/etc/systemd/system/svc-update.service,Nuevo servicio systemd creado tras el acceso a ws-admin
+A19,09:47,Wazuh,5901-new-local-admin,ws-admin,10.10.10.31,-,svc-update,Nueva cuenta local con privilegios de administrador creada
+A20,09:52,Suricata,ET TLS known CDN,ws-user01,10.10.10.41,10.10.10.41,cloudflare,Conexion TLS a CDN legitima de uso habitual

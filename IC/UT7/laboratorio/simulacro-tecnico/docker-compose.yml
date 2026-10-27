@@ -1,0 +1,17 @@
+# Simulacro técnico UT7 · IC-E13 — despliegue del incidente en la VLAN aislada.
+#   docker compose build          (una vez, con red)
+#   docker compose up -d          (nivel 1: 4 puertas traseras)
+#   INCIDENTE_NIVEL=2 docker compose up -d   (nivel 2: + 1 puerta oculta [RETO])
+#   docker compose down
+name: simulacro-tecnico
+
+services:
+  portal:
+    build: .
+    image: xest/portal-comprometido:ut7
+    container_name: portal-comprometido
+    environment:
+      - INCIDENTE_NIVEL=${INCIDENTE_NIVEL:-1}
+    ports:
+      - "8090:80"          # solo accesible en la VLAN de aula
+    restart: "no"

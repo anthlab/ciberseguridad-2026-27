@@ -1,0 +1,55 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>PPS · Apuntes de Git, GitHub y Docker</title><style>body{font:15px/1.55 sans-serif;max-width:950px;margin:36px auto;color:#18314b;padding:20px}h1,h2,h3{color:#155675}h2{margin-top:1.6em}pre{background:#eff4f7;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #bbcbd7;padding:7px;text-align:left}.nota{background:#edf5ed;padding:14px}a{color:#16618a}@page{size:A4;margin:18mm}@media print{body{margin:0;padding:0;font-size:10.5pt}pre{font-size:9pt}h2,h3{break-after:avoid}tr{break-inside:avoid}}</style><body><h1>PPS · Apuntes de Git, GitHub y Docker</h1><p>Apuntes para después de la práctica. Objetivo: conservar y compartir una web con historial y ejecutarla en un contenedor. El proyecto-final incluido es una referencia; conserva tus propios commits y evidencias.</p>
+<h2>1. Tres herramientas, tres funciones</h2><table><tr><th>Herramienta</th><th>Para qué la usamos</th></tr><tr><td>Git</td><td>Guardar versiones y trabajar con ramas en el equipo.</td></tr><tr><td>GitHub</td><td>Alojar el repositorio remoto y proponer/revisar cambios con pull requests.</td></tr><tr><td>Docker</td><td>Construir una imagen con el entorno y crear contenedores a partir de ella.</td></tr></table>
+<h2>2. Primer historial local</h2><p>Abre terminal en la carpeta del proyecto y configura tu nombre y correo de commits solo allí. Sustituye los valores de ejemplo. El correo noreply está en Settings → Emails de GitHub.</p><pre><code>git init -b main
+git config --local user.name &quot;Alumno NN&quot;
+git config --local user.email &quot;TU_CORREO_NOREPLY_DE_GITHUB&quot;
+git status
+git add index.html .gitignore .dockerignore LEEME.txt
+git diff --cached
+git commit -m &quot;Crea la pagina inicial de PPS&quot;
+git log --oneline</code></pre>
+<p>git status muestra estado; git diff muestra cambios sin preparar; git add selecciona lo que entra en el próximo commit; git diff --cached permite revisarlo; commit registra localmente. Guardar un archivo en el editor no crea un commit.</p>
+<h2>3. Publicar en GitHub</h2><p>Crea en la web un repositorio privado vacío llamado pps-arranque. No añadas README si tu repositorio local ya tiene commits. Con gh previamente instalado:</p><pre><code>gh auth login --hostname github.com --git-protocol https --web
+gh auth setup-git
+git remote add origin https://github.com/TU_USUARIO/pps-arranque.git
+git push -u origin main</code></pre>
+<p>La autenticación usa el navegador. No publiques tokens ni claves. origin es un nombre para la dirección remota; push envía commits. El profesor necesita acceso explícito para ver un repositorio privado.</p>
+<h2>4. Proponer e integrar un cambio</h2><p>Crea la rama, modifica index.html y luego ejecuta diff, add, commit y push:</p><pre><code>git switch -c mejora-portada
+git diff
+git add index.html
+git commit -m &quot;Personaliza la portada del aula&quot;
+git push -u origin mejora-portada</code></pre>
+<p>En GitHub crea una PR de mejora-portada hacia main. Revisa Files changed, describe la modificación y cómo la has comprobado, y fusiónala tras la revisión. Actualiza tu main local:</p><pre><code>git switch main
+git pull --ff-only origin main
+git log --oneline --graph --all</code></pre>
+<p>pull --ff-only se detiene si las historias divergen; no fuerces el push para resolverlo. Pide ayuda e inspecciona el historial.</p>
+<h2>5. Dockerfile completo</h2><pre><code>FROM python:3.12-slim
+WORKDIR /app
+COPY index.html .
+USER 10001:10001
+EXPOSE 8000
+CMD [&quot;python&quot;, &quot;-m&quot;, &quot;http.server&quot;, &quot;8000&quot;, &quot;--bind&quot;, &quot;0.0.0.0&quot;]</code></pre>
+<p>FROM selecciona la base; WORKDIR establece el directorio; COPY incorpora la página; USER ejecuta con usuario no root; EXPOSE documenta el puerto; CMD define el proceso. El servidor escucha dentro del contenedor en 0.0.0.0. Es una web de laboratorio, no un servidor de producción.</p>
+<h2>6. Construir y ejecutar</h2><pre><code>docker build -t pps-web:v1 .
+docker run -d --name pps-s01-web -p 127.0.0.1:8080:8000 pps-web:v1
+docker ps
+docker logs pps-s01-web</code></pre>
+<p>Abre http://127.0.0.1:8080. Imagen: plantilla del entorno y archivos. Contenedor: instancia creada desde esa imagen. El proceso principal sirve la web; si termina, se detiene el contenedor. Los logs muestran las peticiones cuando visitas la página.</p>
+<h2>7. Actualizar la web</h2><p>Edita Version 1 → Version 2 en el archivo. El contenedor no cambia automáticamente. Versiona el cambio, construye otra imagen y recrea el contenedor:</p><pre><code>git add index.html
+git commit -m &quot;Actualiza la pagina a version 2&quot;
+git push
+docker build -t pps-web:v2 .
+docker stop pps-s01-web
+docker rm pps-s01-web
+docker run -d --name pps-s01-web -p 127.0.0.1:8080:8000 pps-web:v2</code></pre>
+<p>git push guarda el cambio remoto; no despliega. docker build construye; no sustituye contenedores existentes. docker restart reinicia el mismo contenedor; no lo actualiza a una imagen distinta. Eliminar el contenedor de esta práctica no elimina las imágenes.</p>
+<h2>8. Comandos de consulta y parada</h2><pre><code>docker image ls
+docker ps
+docker ps -a
+docker logs pps-s01-web
+docker stop pps-s01-web
+docker start pps-s01-web</code></pre>
+<p>Al acabar puedes dejarlo parado con stop. No uses limpiezas globales para esta práctica. .gitignore excluye archivos nuevos del seguimiento; no elimina secretos ya subidos. .dockerignore limita el contexto de build y es independiente de Git.</p>
+<h2>9. Diagnóstico rápido</h2><table><tr><th>Problema</th><th>Qué comprobar</th></tr><tr><td>Git pide identidad</td><td>Configurar user.name y user.email dentro del repositorio.</td></tr><tr><td>origin already exists</td><td>git remote -v; no volver a añadir el mismo remoto.</td></tr><tr><td>Push rechazado</td><td>Cuenta, permisos, URL y si el remoto se creó vacío. No usar force.</td></tr><tr><td>Docker permission denied / no Server</td><td>Motor y permisos deben estar preparados; avisar al docente.</td></tr><tr><td>Puerto ocupado</td><td>Publicar 8081:8000 y abrir 8081.</td></tr><tr><td>Nombre ocupado</td><td>Mirar docker ps -a; usar un nombre propio distinto.</td></tr><tr><td>Sigue Version 1</td><td>Comprobar archivo guardado, build v2, nuevo contenedor y refresco sin caché.</td></tr><tr><td>No se descarga la base</td><td>Usar la imagen precargada por el docente; sin ella se necesita red.</td></tr></table>
+<h2>10. Qué viene después</h2><p>Primero repetir este ciclo sin copiar cada comando. Después integrar pruebas y regresiones en el repositorio, añadir Compose cuando haya varios servicios, y más adelante CI, análisis de seguridad y despliegue. Haber hecho una PR hoy no equivale a completar DevSecOps.</p>
+<h2>Referencias oficiales</h2><p><a href="https://docs.github.com/en/get-started/using-github/hello-world">GitHub: repositorios y pull requests</a> · <a href="https://cli.github.com/manual/gh_auth_login">GitHub CLI: login</a> · <a href="https://docs.docker.com/reference/cli/docker/container/run/">Docker: run</a> · <a href="https://docs.docker.com/reference/cli/docker/image/load/">Docker: cargar imágenes</a> · <a href="https://docs.python.org/3/library/http.server.html">Python: servidor HTTP de laboratorio</a>.</p></body></html>

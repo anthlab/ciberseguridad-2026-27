@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Mapa práctica-teoría</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Mapa práctica-teoría</h1>
+</header>
+<h1 id="mapa-práctica-teoría-del-curso-2026-2027">Mapa práctica-teoría
+del curso 2026-2027</h1>
+<p>Este mapa garantiza que la teoría siempre termina en una decisión o
+una operación observable. Se utiliza con el ciclo <strong>predice →
+profesor demuestra → alumnado replica → varía → explica</strong>.</p>
+<h2 id="pps-puesta-en-producción-segura">PPS — Puesta en Producción
+Segura</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>UT</th>
+<th>Teoría imprescindible</th>
+<th>Operación práctica que la demuestra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ejecución, tipos de fallo, oráculo de prueba y límites de
+cobertura</td>
+<td>Provocar un defecto, escribir su regresión y medir cobertura.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Superficie del runtime, memoria, aislamiento y mínimo
+privilegio</td>
+<td>Comparar ejecuciones y bloquear una operación con aislamiento.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Activos, fronteras de confianza, STRIDE y requisitos ASVS
+verificables</td>
+<td>Modelar una amenaza y convertirla en una prueba de control.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Flujo entrada-intérprete-salida, sesión y autorización</td>
+<td>Explotar en laboratorio, corregir la causa y dejar regresión.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Derivación de claves, defensa en profundidad y configuración
+segura</td>
+<td>Medir Argon2id y comparar el servidor antes y después del
+bastionado.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Modelo de confianza móvil y validación en servidor</td>
+<td>Inspeccionar APK y tráfico; demostrar qué control no puede delegarse
+al cliente.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cadena de suministro, puertas de calidad y fallo seguro</td>
+<td>Hacer que la CI bloquee un cambio inseguro y permita el
+corregido.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Riesgo de despliegue, RTO/RPO, reversión y recuperación</td>
+<td>Ejecutar canario, rollback y restauración cronometrada.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ic-incidentes-de-ciberseguridad">IC — Incidentes de
+Ciberseguridad</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>UT</th>
+<th>Teoría imprescindible</th>
+<th>Operación práctica que la demuestra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Gobierno, responsabilidad, control y evidencia de cumplimiento</td>
+<td>Traducir una política en controles comprobables y detectar una
+carencia.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Factor humano, medición ética y sesgo de métricas</td>
+<td>Diseñar un simulacro controlado y analizar resultados sin culpar al
+usuario.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Evento, alerta, incidente, telemetría y cobertura ATT&amp;CK</td>
+<td>Generar un evento y seguirlo hasta una alerta reproducible.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fuente, fiabilidad, trazabilidad y corroboración</td>
+<td>Contrastar una señal física u OSINT antes de convertirla en
+alerta.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Severidad, prioridad, alcance, contención y preservación</td>
+<td>Triar una cola con reloj y contener sin destruir evidencia.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Integridad, cadena de custodia, timeline y causa raíz</td>
+<td>Adquirir, analizar y documentar un incidente con trazabilidad.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Ciclo de respuesta, RACI, resiliencia y validación de
+recuperación</td>
+<td>Ejecutar un playbook y probar que el servicio vuelve realmente.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Umbral de notificación, hechos confirmados, audiencia y plazos</td>
+<td>Redactar notificación y rueda de prensa con reloj y datos
+incompletos.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="he-hacking-ético">HE — Hacking Ético</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>UT</th>
+<th>Teoría imprescindible</th>
+<th>Operación práctica que la demuestra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Autorización, alcance, ROE, proporcionalidad y parada segura</td>
+<td>Redactar y validar reglas antes de tocar el objetivo.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Exposición, explotabilidad, impacto y priorización contextual</td>
+<td>Ordenar hallazgos y justificar herramienta y siguiente prueba.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Autenticación Wi-Fi, captura, ataque y contramedida</td>
+<td>Auditar solo la red de laboratorio y comprobar el
+endurecimiento.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Propagación RF, identidad y observabilidad del equipo azul</td>
+<td>Comparar señales y verificar qué detecta el SOC.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Hipótesis OSINT, fuente primaria, confianza y enumeración
+activa</td>
+<td>Construir un hallazgo trazable y separar dato, inferencia y acción
+activa.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Posición de red, confianza, MITM y prerequisitos de explotación</td>
+<td>Reproducir el fallo y comprobar que la contramedida rompe el
+ataque.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Credencial, privilegio, lateralidad, persistencia y
+reversibilidad</td>
+<td>Demostrar el camino de acceso y eliminar todos los artefactos.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Modelo HTTP, estado, entrada, autorización y prueba
+reproducible</td>
+<td>Auditar manualmente, validar impacto y defender el informe.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="preguntas-de-cierre-comunes">Preguntas de cierre comunes</h2>
+<p>Cada práctica termina respondiendo, en un minuto, a cuatro
+preguntas:</p>
+<ol type="1">
+<li>¿Qué ocurrió y qué evidencia lo demuestra?</li>
+<li>¿Por qué ocurrió?</li>
+<li>¿Qué condición cambiaría el resultado?</li>
+<li>¿Cuál es la siguiente acción profesional y cuál es su límite?</li>
+</ol>
+</body>
+</html>

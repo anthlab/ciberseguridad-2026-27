@@ -1,0 +1,123 @@
+[
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "portal-soc.xest.local",
+    "name_value": "portal-soc.xest.local",
+    "id": 12894450011,
+    "entry_timestamp": "2026-10-02T08:14:55.331",
+    "not_before": "2026-10-01T00:00:00",
+    "not_after": "2026-12-30T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8c9"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "www.xest.local",
+    "name_value": "www.xest.local\nxest.local",
+    "id": 12894450012,
+    "entry_timestamp": "2026-09-15T11:03:20.100",
+    "not_before": "2026-09-14T00:00:00",
+    "not_after": "2026-12-13T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8ca"
+  },
+  {
+    "issuer_ca_id": 295815,
+    "issuer_name": "C=BE, O=GlobalSign nv-sa, CN=GlobalSign RSA OV SSL CA 2018",
+    "common_name": "*.xest.local",
+    "name_value": "*.xest.local",
+    "id": 12811009887,
+    "entry_timestamp": "2026-05-20T09:41:12.775",
+    "not_before": "2026-05-19T00:00:00",
+    "not_after": "2027-05-19T23:59:59",
+    "serial_number": "1a2b3c4d5e6f70819203"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "vpn.xest.local",
+    "name_value": "vpn.xest.local",
+    "id": 12890011223,
+    "entry_timestamp": "2026-09-28T18:22:41.902",
+    "not_before": "2026-09-27T00:00:00",
+    "not_after": "2026-12-26T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8cb"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "correo.xest.local",
+    "name_value": "correo.xest.local",
+    "id": 12890011224,
+    "entry_timestamp": "2026-08-11T07:10:05.443",
+    "not_before": "2026-08-10T00:00:00",
+    "not_after": "2026-11-08T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8cc"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "old-portal.xest.local",
+    "name_value": "old-portal.xest.local",
+    "id": 11005544332,
+    "entry_timestamp": "2024-03-04T14:55:30.010",
+    "not_before": "2024-03-03T00:00:00",
+    "not_after": "2024-06-01T23:59:59",
+    "serial_number": "0099aabbccddeeff0011"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "test.xest.local",
+    "name_value": "test.xest.local",
+    "id": 12894450099,
+    "entry_timestamp": "2026-10-01T21:47:03.221",
+    "not_before": "2026-09-30T00:00:00",
+    "not_after": "2026-12-29T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8cd"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "soc.xest.local",
+    "name_value": "soc.xest.local",
+    "id": 12894450100,
+    "entry_timestamp": "2026-10-03T06:31:18.556",
+    "not_before": "2026-10-02T00:00:00",
+    "not_after": "2026-12-31T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8ce"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "jenkins.xest.local",
+    "name_value": "jenkins.xest.local",
+    "id": 12894450101,
+    "entry_timestamp": "2026-10-04T02:09:44.777",
+    "not_before": "2026-10-03T00:00:00",
+    "not_after": "2027-01-01T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8cf"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "dev-api.xest.local",
+    "name_value": "dev-api.xest.local",
+    "id": 12894450102,
+    "entry_timestamp": "2026-09-30T13:37:59.014",
+    "not_before": "2026-09-29T00:00:00",
+    "not_after": "2026-12-28T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8d0"
+  },
+  {
+    "issuer_ca_id": 183267,
+    "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+    "common_name": "portal-soc.xest.local",
+    "name_value": "portal-soc.xest.local",
+    "id": 12894450103,
+    "entry_timestamp": "2026-07-05T10:00:00.000",
+    "not_before": "2026-07-04T00:00:00",
+    "not_after": "2026-10-02T23:59:59",
+    "serial_number": "04a1b2c3d4e5f6a7b8d1"
+  }
+]

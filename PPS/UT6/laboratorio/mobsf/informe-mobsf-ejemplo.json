@@ -1,0 +1,43 @@
+{
+  "_nota": "Informe MobSF RECORTADO de NotasXest v1.2, pregrabado para la alternativa sin APK/emulador (PPS · UT6). Los valores son coherentes con app-laboratorio/. No es la salida completa de MobSF, sino los campos que se leen en clase.",
+  "app_name": "NotasXest",
+  "package_name": "com.xest.notaslab",
+  "version_name": "1.2",
+  "version_code": "3",
+  "security_score": 34,
+  "grade": "C",
+  "certificate_analysis": {
+    "certificate_findings": [
+      ["warning", "La app está firmada con un certificado de depuración (debug). No apto para producción."]
+    ]
+  },
+  "manifest_analysis": [
+    {"rule": "debuggable", "severity": "high", "description": "android:debuggable=true: la app es depurable en cualquier dispositivo."},
+    {"rule": "clear_text_traffic", "severity": "high", "description": "usesCleartextTraffic=true: permite tráfico HTTP en claro."},
+    {"rule": "app_backup", "severity": "warning", "description": "allowBackup=true: los datos de la app se pueden extraer por copia de seguridad (adb backup)."},
+    {"rule": "exported_activity", "severity": "warning", "description": "Actividad NotasActivity exportada sin permiso: cualquier app puede lanzarla."},
+    {"rule": "network_security_config", "severity": "warning", "description": "trust-anchors incluye CA de usuario para xest.local: permite interceptación con CA instalado."}
+  ],
+  "permissions": {
+    "android.permission.READ_SMS": {"status": "dangerous", "info": "leer mensajes SMS"},
+    "android.permission.RECEIVE_SMS": {"status": "dangerous", "info": "recibir mensajes SMS"},
+    "android.permission.READ_CONTACTS": {"status": "dangerous", "info": "leer los contactos"},
+    "android.permission.ACCESS_FINE_LOCATION": {"status": "dangerous", "info": "ubicación precisa (GPS)"},
+    "android.permission.CAMERA": {"status": "dangerous", "info": "acceso a la cámara"},
+    "android.permission.RECORD_AUDIO": {"status": "dangerous", "info": "grabar audio"},
+    "android.permission.READ_PHONE_STATE": {"status": "dangerous", "info": "estado e identidad del teléfono"},
+    "android.permission.WRITE_EXTERNAL_STORAGE": {"status": "dangerous", "info": "escribir en almacenamiento externo"},
+    "android.permission.INTERNET": {"status": "normal", "info": "acceso completo a la red"}
+  },
+  "secrets": [
+    "API_KEY : xk_live_9f2c7b41ad554e0e8d3b6a1029f4c7de",
+    "DEMO_PASSWORD : SuperSecreto123!",
+    "SYNC_SECRET (partido) : AKIAX3STLAB + 0RQEXAMPLEK3Y",
+    "BASE_URL : http://api.xest.local:8090 (HTTP en claro)"
+  ],
+  "code_analysis": [
+    {"rule": "android_insecure_storage", "severity": "high", "description": "Uso de SharedPreferences en MODE_PRIVATE para guardar auth_token y password en claro (LoginActivity)."},
+    {"rule": "android_hardcoded_secret", "severity": "high", "description": "Clave de API y credenciales incrustadas en ApiClient."},
+    {"rule": "android_client_side_validation", "severity": "warning", "description": "PurchaseManager decide 'premium' en el cliente a partir de la respuesta."}
+  ]
+}

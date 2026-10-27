@@ -1,0 +1,8 @@
+CAPTURA DIDÁCTICA SINTÉTICA; alternativa si no hay Git.
+Commit A · 2026-09-20T10:00:00Z · ova.kestrel@mail.xest.example
++ usuario=kestrel_ova
++ marcador=XEST_LAB_NO_VALIDO_123
+Commit B · 2026-09-21T10:00:00Z · ova.kestrel@mail.xest.example
+- marcador=XEST_LAB_NO_VALIDO_123
++ marcador=ELIMINADO_DEL_ESTADO_ACTUAL
+Ninguna cadena es una credencial utilizable.

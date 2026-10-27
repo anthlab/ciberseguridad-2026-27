@@ -1,0 +1,22 @@
+# Salida de: vol -f memoria.raw windows.pslist
+# Maquina: WIN-XEST-ADM (10.10.10.50) — estacion de administracion de xest
+# Volcado: memoria.raw  (2027-01-14 11:02 UTC)  Volatility 3 Framework 2.7.0
+# Dataset de laboratorio IC UT6. Los PID/tiempos son coherentes con el resto de evidencias.
+
+PID    PPID   ImageFileName     Offset(V)          Threads  Handles  SessionId  Wow64  CreateTime                 ExitTime
+4      0      System            0x8e0b8b8c3040     129      -        N/A        False  2027-01-14 07:58:11.000000 N/A
+328    4      smss.exe          0x8e0b8f2a1080     2        -        N/A        False  2027-01-14 07:58:11.000000 N/A
+456    448    csrss.exe         0x8e0b8f6b2140     11       -        0          False  2027-01-14 07:58:13.000000 N/A
+512    448    wininit.exe       0x8e0b8f7c3080     1        -        0          False  2027-01-14 07:58:13.000000 N/A
+520    504    csrss.exe         0x8e0b8f7d4080     13       -        1          False  2027-01-14 07:58:13.000000 N/A
+572    504    winlogon.exe      0x8e0b8f8e5080     3        -        1          False  2027-01-14 07:58:14.000000 N/A
+668    512    services.exe      0x8e0b8f9f6080     8        -        0          False  2027-01-14 07:58:14.000000 N/A
+680    512    lsass.exe         0x8e0b8fa07080     9        -        0          False  2027-01-14 07:58:14.000000 N/A
+812    668    svchost.exe       0x8e0b8fb18080     22       -        0          False  2027-01-14 07:58:15.000000 N/A
+1104   668    svchost.exe       0x8e0b8fc29080     18       -        0          False  2027-01-14 07:58:15.000000 N/A
+1560   668    svchost.exe       0x8e0b8fd3a080     14       -        0          False  2027-01-14 07:58:16.000000 N/A
+2984   2960   explorer.exe      0x8e0b90a4b080     41       -        1          False  2027-01-14 10:20:58.000000 N/A
+2760   2984   OneDrive.exe      0x8e0b90b5c080     19       -        1          True   2027-01-14 10:21:12.000000 N/A
+3120   2984   powershell.exe    0x8e0b90c6d080     12       -        1          False  2027-01-14 10:24:03.000000 N/A
+4812   3120   svchost32.exe     0x8e0b90d7e080     8        -        1          False  2027-01-14 10:25:41.000000 N/A
+5044   4812   cmd.exe           0x8e0b90e8f080     1        -        1          False  2027-01-14 10:35:02.000000 N/A

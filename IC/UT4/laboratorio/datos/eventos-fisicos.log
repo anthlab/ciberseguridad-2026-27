@@ -1,0 +1,11 @@
+Nov 04 09:03:11 pacs01 xestpacs: event=door_open zone=oficinas asset=puerta-principal actor=a.morales result=ok out_of_hours=no
+Nov 04 09:12:47 pacs01 xestpacs: event=door_open zone=cpd asset=puerta-cpd actor=j.ferrer result=ok out_of_hours=no
+Nov 04 13:20:44 edr07 xestpacs: event=usb_insert zone=soc asset=ws-analista-03 actor=j.ferrer result=deny out_of_hours=no
+Nov 04 22:14:03 pacs01 xestpacs: event=door_open zone=cpd asset=puerta-cpd actor=UNKNOWN result=unknown out_of_hours=yes
+Nov 04 22:14:05 pacs01 xestpacs: event=rack_open zone=cpd asset=rackA actor=UNKNOWN result=unknown out_of_hours=yes
+Nov 05 03:41:57 pacs01 xestpacs: event=cctv_signal_lost zone=cpd asset=cam-cpd-02 actor=system result=alarm out_of_hours=yes
+Nov 05 08:59:10 pacs01 xestpacs: event=badge_denied zone=cpd asset=puerta-cpd actor=UNKNOWN result=deny out_of_hours=no
+Nov 05 08:59:14 pacs01 xestpacs: event=badge_denied zone=cpd asset=puerta-cpd actor=UNKNOWN result=deny out_of_hours=no
+Nov 05 08:59:19 pacs01 xestpacs: event=badge_denied zone=cpd asset=puerta-cpd actor=UNKNOWN result=deny out_of_hours=no
+Nov 05 08:59:25 pacs01 xestpacs: event=tailgating zone=oficinas asset=torno-1 actor=UNKNOWN result=alarm out_of_hours=no
+Nov 05 10:30:02 pacs01 xestpacs: event=door_open zone=oficinas asset=puerta-principal actor=l.castell result=ok out_of_hours=no

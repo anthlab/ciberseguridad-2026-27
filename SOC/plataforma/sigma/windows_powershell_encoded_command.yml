@@ -1,0 +1,32 @@
+title: PowerShell EncodedCommand (posible payload ofuscado)
+id: 5c1a0f10-6a4a-4e6f-8f2d-b2e0f8a8f003
+status: experimental
+description: |
+  Detecta ejecuciones de PowerShell con la bandera -EncodedCommand
+  (o abreviaturas -e / -ec / -enc), técnica típica de payloads
+  obfuscados en fase de execution.
+author: SOC de xest
+date: 2026/07/19
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+  - https://attack.mitre.org/techniques/T1027/004/
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - attack.defense_evasion
+  - attack.t1027.004
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  ps_binary:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  ps_encoded_flag:
+    CommandLine|re: '(?i)(^|\s)-(e|ec|en|enc|enco|encod|encode|encoded|encodedc|encodedco|encodedcom|encodedcomm|encodedcomma|encodedcomman|encodedcommand)(\s+)'
+  condition: ps_binary and ps_encoded_flag
+falsepositives:
+  - Herramientas de administración legítimas que se lanzan siempre así
+  - Scripts firmados por la organización
+level: high

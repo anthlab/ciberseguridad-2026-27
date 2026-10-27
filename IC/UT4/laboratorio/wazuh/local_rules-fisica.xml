@@ -1,0 +1,71 @@
+<!--
+  Reglas de correlación física → alerta lógica del SOC de xest (IC · UT4, IC-E6).
+  Instalar en:  /var/ossec/etc/rules/local_rules.xml  (append)
+  Recargar:     /var/ossec/bin/wazuh-control restart
+  Nota didáctica: los eventos puramente físicos (apertura de puerta, tailgating)
+  NO tienen un mapeo limpio a MITRE ATT&CK, que modela TTP sobre sistemas. Solo se
+  etiqueta ATT&CK donde es defendible (USB no autorizado = T1200 Hardware Additions).
+  No forzar mapeos: un mapeo incorrecto es peor que ninguno.
+-->
+<group name="fisica,xest,">
+
+  <rule id="100200" level="2">
+    <decoded_as>xestpacs</decoded_as>
+    <description>PACS xest: evento de seguridad física registrado.</description>
+  </rule>
+
+  <rule id="100201" level="10">
+    <if_sid>100200</if_sid>
+    <field name="event">rack_open</field>
+    <field name="out_of_hours">yes</field>
+    <description>Apertura de rack en CPD fuera de horario en $(asset) por $(actor).</description>
+    <group>fisica_critica,</group>
+  </rule>
+
+  <rule id="100202" level="10">
+    <if_sid>100200</if_sid>
+    <field name="event">door_open</field>
+    <field name="actor">UNKNOWN</field>
+    <field name="out_of_hours">yes</field>
+    <description>Acceso físico no identificado al $(zone) fuera de horario en $(asset).</description>
+    <group>fisica_critica,</group>
+  </rule>
+
+  <rule id="100203" level="8">
+    <if_sid>100200</if_sid>
+    <field name="event">usb_insert</field>
+    <field name="result">deny</field>
+    <description>Dispositivo USB no autorizado bloqueado en $(asset) ($(zone)).</description>
+    <mitre>
+      <id>T1200</id>
+    </mitre>
+  </rule>
+
+  <rule id="100204" level="9">
+    <if_sid>100200</if_sid>
+    <field name="event">cctv_signal_lost</field>
+    <description>Pérdida de señal de CCTV en $(asset): posible manipulación o sabotaje.</description>
+    <group>fisica_critica,</group>
+  </rule>
+
+  <rule id="100206" level="4">
+    <if_sid>100200</if_sid>
+    <field name="event">badge_denied</field>
+    <description>Lectura de tarjeta denegada en $(asset).</description>
+  </rule>
+
+  <rule id="100205" level="10" frequency="3" timeframe="30">
+    <if_matched_sid>100206</if_matched_sid>
+    <same_field>asset</same_field>
+    <description>Múltiples lecturas de tarjeta denegadas en $(asset): posible tarjeta clonada o fuerza bruta física.</description>
+    <group>fisica_critica,</group>
+  </rule>
+
+  <rule id="100207" level="10">
+    <if_sid>100200</if_sid>
+    <field name="event">tailgating</field>
+    <description>Tailgating detectado en $(asset) ($(zone)): dos personas, una sola credencial.</description>
+    <group>fisica_critica,</group>
+  </rule>
+
+</group>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Portal SOC · xest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:system-ui,sans-serif;background:#0b1220;color:#e6edf3;margin:0}
+    .wrap{max-width:420px;margin:8vh auto;padding:2rem;background:#111a2b;border-radius:12px}
+    h1{font-size:1.2rem;margin-top:0}
+    label{display:block;margin:.8rem 0 .3rem}
+    input{width:100%;padding:.6rem;border-radius:6px;border:1px solid #33415a;background:#0b1220;color:#e6edf3}
+    button{margin-top:1.2rem;width:100%;padding:.7rem;border:0;border-radius:6px;background:#2f6feb;color:#fff;font-weight:600;cursor:pointer}
+    .muted{color:#8b98a5;font-size:.85rem;margin-top:1rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Portal SOC · xest — acceso</h1>
+    <!--
+      PUNTO DE PARTIDA DELIBERADAMENTE FLOJO (aula).
+      El alumnado lo endurece a lo largo de PPS:
+        · UT4: la lógica de login real (parametrizar consulta, control de acceso).
+        · UT5: almacenar contraseñas con Argon2id; cabeceras de seguridad en nginx.
+        · UT8: /health real y despliegue con reversión.
+      HE UT8 audita este mismo portal después del bastionado.
+    -->
+    <form method="post" action="/login">
+      <label for="u">Usuario</label>
+      <input id="u" name="usuario" autocomplete="username">
+      <label for="p">Contraseña</label>
+      <input id="p" name="password" type="password" autocomplete="current-password">
+      <button type="submit">Entrar</button>
+    </form>
+    <p class="muted">Escenario de laboratorio. Uso exclusivo en la VLAN de aula aislada.</p>
+  </div>
+</body>
+</html>

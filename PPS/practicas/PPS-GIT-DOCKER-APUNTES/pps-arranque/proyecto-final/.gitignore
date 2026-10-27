@@ -1,0 +1,5 @@
+evidencias/
+.env
+__pycache__/
+*.tar
+*.zip

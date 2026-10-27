@@ -1,0 +1,5 @@
+# Dependencias del laboratorio de tráfico móvil (PPS · UT6)
+# El backend y el cliente de pinning usan solo librería estándar; esto es para el cliente
+# HTTP y para mitmproxy.
+requests>=2.31
+mitmproxy>=10.0

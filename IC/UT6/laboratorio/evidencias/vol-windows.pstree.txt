@@ -1,0 +1,27 @@
+# Salida de: vol -f memoria.raw windows.pstree
+# Dataset de laboratorio IC UT6. La sangria (*) marca la relacion padre-hijo.
+# Fijate en la rama anomala: explorer.exe -> powershell.exe -> svchost32.exe -> cmd.exe
+
+PID    PPID   ImageFileName     CreateTime
+4      0      System            2027-01-14 07:58:11.000000
+* 328  4      smss.exe          2027-01-14 07:58:11.000000
+456    448    csrss.exe         2027-01-14 07:58:13.000000
+512    448    wininit.exe       2027-01-14 07:58:13.000000
+* 668  512    services.exe      2027-01-14 07:58:14.000000
+** 812  668   svchost.exe       2027-01-14 07:58:15.000000
+** 1104 668   svchost.exe       2027-01-14 07:58:15.000000
+** 1560 668   svchost.exe       2027-01-14 07:58:16.000000
+* 680  512    lsass.exe         2027-01-14 07:58:14.000000
+520    504    csrss.exe         2027-01-14 07:58:13.000000
+572    504    winlogon.exe      2027-01-14 07:58:14.000000
+2984   2960   explorer.exe      2027-01-14 10:20:58.000000
+* 2760 2984   OneDrive.exe      2027-01-14 10:21:12.000000
+* 3120 2984   powershell.exe    2027-01-14 10:24:03.000000
+** 4812 3120  svchost32.exe     2027-01-14 10:25:41.000000
+*** 5044 4812 cmd.exe           2027-01-14 10:35:02.000000
+
+# Pistas de anomalia:
+#  - svchost32.exe NO es un binario legitimo de Windows. El real es svchost.exe (sin "32")
+#    y SIEMPRE cuelga de services.exe (PID 668), nunca de powershell.exe.
+#  - explorer.exe (2984) se crea a las 10:20:58 -> sesion interactiva iniciada a esa hora
+#    (coincide con el inicio de sesion RDP del atacante).

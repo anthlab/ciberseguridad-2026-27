@@ -1,0 +1,91 @@
+# Canalización de integración continua con controles de seguridad (PPS · UT7)
+#
+# Referencia didáctica para el módulo Puesta en producción segura. Ejecuta, en
+# cada push y en cada pull request, los controles mínimos de DevSecOps: SAST, SCA,
+# detección de secretos y análisis de infraestructura como código. Cada control
+# emite un artefacto SARIF que puede ingerir la plataforma de gestión de
+# vulnerabilidades del SOC.
+#
+# Adaptar `paths`/rutas al proyecto real. Para que un hallazgo BLOQUEE la fusión,
+# la rama principal debe estar protegida exigiendo que este workflow pase en verde.
+
+name: PPS · Seguridad en la canalización
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write   # permite subir los SARIF a la pestaña Security
+
+jobs:
+  sast:
+    name: SAST — Semgrep
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Semgrep OWASP Top Ten
+        run: |
+          python3 -m pip install semgrep
+          semgrep --config p/owasp-top-ten --config p/security-audit \
+                  --sarif --output semgrep.sarif --error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sarif-semgrep
+          path: semgrep.sarif
+
+  sca:
+    name: SCA — dependencias vulnerables (Trivy)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trivy filesystem
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          format: sarif
+          output: trivy.sarif
+          severity: CRITICAL,HIGH
+          exit-code: '1'        # falla la canalización ante CRITICAL/HIGH
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sarif-trivy
+          path: trivy.sarif
+
+  secretos:
+    name: Secretos — gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # historial completo para escanear todos los commits
+      - name: gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz \
+            | tar -xz gitleaks
+          ./gitleaks detect --source . --report-format sarif --report-path gitleaks.sarif --redact
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sarif-gitleaks
+          path: gitleaks.sarif
+
+  iac:
+    name: IaC — Checkov
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkov
+        run: |
+          python3 -m pip install checkov
+          checkov -d . --output sarif --output-file-path . --soft-fail-on LOW || true
+          # Quitar `|| true` cuando el proyecto esté limpio para que bloquee de verdad.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sarif-checkov
+          path: results.sarif

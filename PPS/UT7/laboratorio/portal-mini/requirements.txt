@@ -1,0 +1,10 @@
+# Dependencias fijadas a versiones con CVE conocidos (a propósito, para el SCA).
+# Trivy fs marcará CRITICAL/HIGH en varias de ellas => la CI debe fallar (exit-code 1).
+#   Flask 0.12.2   -> arrastra Werkzeug/Jinja2 antiguos
+#   PyYAML 5.3.1   -> CVE-2020-14343 (ejecución de código con full_load)
+#   requests 2.19.1-> CVE-2018-18074 (fuga de credenciales en redirección)
+#   Jinja2 2.10    -> CVE-2019-10906 (escape de sandbox)
+Flask==0.12.2
+PyYAML==5.3.1
+requests==2.19.1
+Jinja2==2.10

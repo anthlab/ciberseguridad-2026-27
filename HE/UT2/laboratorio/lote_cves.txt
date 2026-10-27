@@ -1,0 +1,45 @@
+# Lote de 30 CVE para el ejercicio de priorización de HE UT2 (HE-E4).
+# Formato: CVE,CVSS  (el CVSS base v3 se anota aquí; EPSS y KEV los añade prioriza.py).
+#   En aula aislada (sin Internet), con snapshots locales:
+#   python3 prioriza.py --cve-list lote_cves.txt \
+#       --kev-file kev_snapshot.json --epss-file epss_snapshot.csv --salida priorizado.csv
+#   Con Internet (fuentes vivas): quitar --kev-file y --epss-file.
+#
+# El lote está mezclado a propósito: hay CVE en KEV (explotación activa), CVE con
+# CVSS muy alto pero sin explotación notable, y CVE de gravedad media que suben por EPSS.
+# El objetivo NO es el número: es que el alumnado justifique las discrepancias entre el
+# orden por CVSS y el orden por prioridad real.
+#
+# --- Explotadas activamente / históricas en KEV (deberían subir) ---
+CVE-2021-44228,10.0
+CVE-2021-45046,9.0
+CVE-2021-34527,8.8
+CVE-2014-0160,7.5
+CVE-2017-0144,8.8
+CVE-2019-0708,9.8
+CVE-2020-1472,10.0
+CVE-2021-26855,9.8
+CVE-2021-34473,9.8
+CVE-2022-1388,9.8
+CVE-2023-34362,9.8
+CVE-2023-4966,7.5
+CVE-2024-3400,10.0
+CVE-2018-13379,9.8
+# --- CVSS alto pero de explotación menos probable/menos observada (contrastar) ---
+CVE-2020-0601,8.1
+CVE-2019-19781,9.8
+CVE-2021-22005,9.8
+CVE-2022-22965,9.8
+CVE-2022-30190,7.8
+CVE-2023-23397,9.8
+CVE-2015-1635,10.0
+CVE-2017-5638,10.0
+# --- Gravedad media/variable (algunos suben por EPSS) ---
+CVE-2019-11510,10.0
+CVE-2020-5902,9.8
+CVE-2021-21972,9.8
+CVE-2022-26134,9.8
+CVE-2023-27997,9.8
+CVE-2016-5195,7.8
+CVE-2018-7600,9.8
+CVE-2014-6271,9.8

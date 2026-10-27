@@ -1,0 +1,29 @@
+# HE UT6 — objetivos propios de la unidad (se levantan ADEMÁS del compose común).
+# NO exponer a Internet. Solo VLAN de aula aislada.
+#   docker compose -f docker-compose.ut6.yml up -d --build
+name: xest-ut6
+
+services:
+  # --- Contraste defensivo del MITM: HTTPS con HSTS. El downgrade a HTTP FALLA aquí. ---
+  hsts-web:
+    image: nginx:1.27-alpine
+    container_name: hsts-web
+    ports: ["8443:443"]
+    volumes:
+      - ./hsts-web/nginx-hsts.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./hsts-web/certs:/etc/nginx/certs:ro
+    restart: unless-stopped
+
+  # --- Objetivo de explotación de HE-E12: inyección de comandos + SUID mal configurado. ---
+  #     Cadena reproducible: RCE (www-data) -> enumeración -> privesc por SUID find -> root.
+  vuln-app:
+    build: ./vuln-app
+    container_name: vuln-app
+    ports: ["8085:80"]
+    restart: unless-stopped
+    # Sin red hacia Internet; solo alcanzable desde la VLAN de aula.
+
+# Nota: fijamos nginx:1.27-alpine (reproducibilidad). vuln-app se construye a partir de
+# php:8.2-apache pinneado en su Dockerfile. Si una imagen cambia de comportamiento entre
+# clases, una demo rota es tiempo perdido: anotar el digest con `docker inspect` tras la
+# primera prueba de humo.

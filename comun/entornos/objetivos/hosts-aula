@@ -1,0 +1,12 @@
+# Plantilla de /etc/hosts para las estaciones del aula.
+# Ajustar las IP al direccionamiento real de la VLAN de laboratorio.
+# Desplegar a cada estación o, mejor, servir estos nombres desde el DNS del router del lab.
+#
+# Uso rápido en una estación (Linux):
+#   sudo tee -a /etc/hosts < hosts-aula
+#
+10.10.10.10   objetivo.xest.local portal-soc.xest.local
+10.10.10.11   juice.xest.local
+10.10.10.12   dvwa.xest.local
+10.10.10.13   bwapp.xest.local
+10.10.10.20   soc.xest.local wazuh.xest.local thehive.xest.local misp.xest.local
