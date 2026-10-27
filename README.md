@@ -16,6 +16,7 @@ Repositorio de trabajo del alumnado para **Puesta en Producción Segura**, **Hac
 - Clase del 27/10: [práctica de código seguro](https://drive.google.com/file/d/1bw1sd5WXydWSM7hGc36O2kpfu6VTYTbL/view).
 - [Guía del módulo](https://docs.google.com/document/d/1Fw5AyGyt3BvqKbCub_gRftDxvTGoakZaP-INeGj53Ek/edit).
 - [Catálogo de cuestionarios y Kahoot](./KAHOOT-Y-TEST.md).
+- [Cursos online gratuitos y formación complementaria](./CURSOS-ONLINE.md).
 
 **Aviso:** los enlaces a Drive solo funcionarán para alumnos con permisos concedidos; no se publican soluciones ni claves. No redistribuir el material del profesor desde el repositorio del alumnado.
 
