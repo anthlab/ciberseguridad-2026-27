@@ -2,6 +2,10 @@
 
 Miércoles · 4 h · Prof. José Picón
 
+## Práctica de esta semana
+
+- [Descargar PDF de la práctica del 28 de octubre: Wazuh](practicas/IC-Wazuh-28-10-2026.pdf)
+
 ## Prácticas de clase
 
 1. SOC con Wazuh
