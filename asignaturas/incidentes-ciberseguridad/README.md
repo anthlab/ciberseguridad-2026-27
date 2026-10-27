@@ -42,13 +42,10 @@ Aprenderás a detectar, registrar, priorizar, investigar, contener y comunicar i
 
 HE genera eventos **solo en un entorno expresamente autorizado**; IC recibe logs o evidencias anonimizadas y documenta detección, análisis y recuperación. Es necesario planificar el desfase de clases: el evento del jueves podrá investigarse en IC el miércoles siguiente.
 
-## Material de referencia de la asignatura
+## Material disponible en GitHub
 
-- [Guía oficial del módulo en Drive](https://docs.google.com/document/d/1rKWTmwklCHz6ErYjyzHoNfGDSMNcQ3-bDgFEhN_UnFs/edit)
-- [Práctica 1: gobierno y análisis de políticas](https://docs.google.com/document/d/1WPByplcoJ8iyhoZI6ZzwYWnwKBKsd6qb2wNtI0wz4Cw/edit)
-- [Manual del alumnado (revisión 12/10/2026)](https://drive.google.com/file/d/1Nj5Q5cixP00bab5y48MTDbG0WcBiDHBe/view)
-- [Diapositivas del curso](https://drive.google.com/file/d/1vFquryv_UJd8ZmOLHtlv5pGZlRH_PufF/view)
+- [UT1 · Sesión 1: guía de clase y actividades](./UT1/sesion-1.md)
 
-**Importante:** comprueba los permisos de lectura de Drive antes de facilitar estos enlaces a la clase. Los laboratorios avanzados y la validez de los plazos normativos se revisarán antes de impartirse.
+Las próximas sesiones, manuales y presentaciones se incorporarán aquí como archivos del repositorio una vez revisados para uso del alumnado. No se requiere entrar en Drive para consultar la sesión 1. Los materiales de evaluación reservados al profesor no se publicarán.
 
-> Material de aula — José Picón.
+**Material de aula — José Picón.**
