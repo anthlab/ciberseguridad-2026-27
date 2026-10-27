@@ -4,6 +4,10 @@ Jueves · 4 h · Prof. José Picón
 
 Empezamos por el OSINT: UT1 → UT5 → UT2 → UT3-4 → UT6-7 → UT8.
 
+## Práctica de esta semana
+
+- [Descargar PDF de la práctica del 29 de octubre: TECNORIBERA](practicas/HE-TECNORIBERA-29-10-2026.pdf)
+
 ## Prácticas de clase
 
 1. OSINT
