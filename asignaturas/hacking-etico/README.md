@@ -45,13 +45,10 @@ En este módulo aprenderás a planificar, ejecutar y documentar auditorías de s
 
 En PPS se construye y bastiona el servicio que después se auditará en HE UT8. Las evidencias sintéticas generadas en HE UT6/UT7 alimentarán las investigaciones de IC UT5/UT6/UT7. La práctica roja se ejecutará exclusivamente en el laboratorio autorizado.
 
-## Material de referencia de la asignatura
+## Material disponible en GitHub
 
-- [Guía oficial del módulo en Drive](https://docs.google.com/document/d/1zO_SQKRf1xOyN2r6IBcCNVYt0Tn08pM2rSyXoAmUR-g/edit)
-- [Práctica 1: marco ético-legal, fases y ATT&CK](https://docs.google.com/document/d/17zPo7kr0dIf0peVOuVhGQJAkRlvC7iP9gDF_YuZmkUA/edit)
-- [Manual del alumnado (revisión 12/10/2026)](https://drive.google.com/file/d/15HGX5MWYJigh7_UNObuCztguJetlugxt/view)
-- [Diapositivas del curso](https://drive.google.com/file/d/1LlgURKOa-g2islKy1VM6lvxhwWkQ35uF/view)
+- [UT1 · Sesión 1: guía de clase y actividades](./UT1/sesion-1.md)
 
-**Importante:** los enlaces de Drive requieren que el docente conceda permisos de lectura al alumnado; estar enlazados desde GitHub no los hace públicos.
+Las próximas sesiones, manuales y presentaciones se incorporarán aquí como archivos del repositorio una vez revisados para uso del alumnado. No se requiere entrar en Drive para consultar la sesión 1. Los materiales de evaluación reservados al profesor no se publicarán.
 
-> Material de aula — José Picón. Este documento no constituye autorización para realizar auditorías fuera del laboratorio.
+**Material de aula — José Picón.**
