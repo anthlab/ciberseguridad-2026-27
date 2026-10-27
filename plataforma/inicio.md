@@ -44,6 +44,16 @@ Aquí tienes todo el material de mis tres módulos: temario, prácticas de clase
 
 </div>
 
+## Esta semana: 28 y 29 de octubre
+
+Chicos y chicas, aquí tenéis lo que vamos a trabajar estos dos días. Si tenéis actividades pendientes, empezad por la ruta de recuperación de vuestra guía; si vais al día, continuad con la ampliación.
+
+- **Miércoles · Incidentes:** [práctica guiada de Wazuh, agentes y eventos](IC/practicas/2026-10-28-GUIA-WAZUH.md). Tenéis también los PDF anteriores y la guía de problemas habituales en [prácticas de Incidentes](IC/README.md).
+- **Jueves · Hacking Ético:** [continuación de TECNORIBERA](HE/practicas/2026-10-29-GUIA-TECNORIBERA.md). Si os falta la enumeración anterior, recuperadla desde [prácticas de Hacking Ético](HE/README.md).
+- **Próximas sesiones:** [guías de noviembre y 1 de diciembre](docs/sesiones/README.md).
+
+Las instrucciones están pensadas para que podáis trabajar por vuestra cuenta, sin compartir credenciales ni actuar fuera del laboratorio autorizado.
+
 ## Empieza aquí
 
 1. [Primera sesión: terminal, Git y Docker](comun/PRIMERA-SESION.md)
