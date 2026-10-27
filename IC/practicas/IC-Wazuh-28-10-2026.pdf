@@ -1,0 +1,99 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 4584 >>
+stream
+BT /F1 15 Tf 45 802 Td (WAZUH - PRACTICA DEL 28/10/2026) Tj ET
+0.75 w 45 789 m 548 789 l S
+BT /F1 9.6 Tf 45 772 Td (Mi\351rcoles 28 de octubre de 2026 - Seguimos con Wazuh) Tj ET
+BT /F1 9.6 Tf 45 758.3 Td () Tj ET
+BT /F1 9.6 Tf 45 744.6 Td (Chicos y chicas, hoy vamos a continuar el SOC que ya ten\351is instalado con Docker en) Tj ET
+BT /F1 9.6 Tf 45 730.9 Td (vuestro propio equipo. Lo importante no es ejecutar comandos sin m\341s: quiero que) Tj ET
+BT /F1 9.6 Tf 45 717.2 Td (comprob\351is qu\351 funciona, sep\341is investigar los errores y expliqu\351is lo que aparece en el) Tj ET
+BT /F1 9.6 Tf 45 703.5 Td (panel.) Tj ET
+BT /F1 9.6 Tf 45 689.8 Td () Tj ET
+BT /F1 9.6 Tf 45 676.1 Td (Objetivos: comprobar los componentes, verificar un agente, buscar eventos y redactar un) Tj ET
+BT /F1 9.6 Tf 45 662.4 Td (peque\361o informe. Duraci\363n: 4 horas.) Tj ET
+BT /F1 9.6 Tf 45 648.7 Td () Tj ET
+BT /F1 9.6 Tf 45 635 Td (Antes de empezar \(30 minutos\)) Tj ET
+BT /F1 9.6 Tf 45 621.3 Td () Tj ET
+BT /F1 9.6 Tf 45 607.6 Td (1. Abre la terminal en la carpeta donde instalaste Wazuh y ejecuta docker compose ps.) Tj ET
+BT /F1 9.6 Tf 45 593.9 Td (Comprueba el estado del Manager, Indexer y Dashboard.) Tj ET
+BT /F1 9.6 Tf 45 580.2 Td () Tj ET
+BT /F1 9.6 Tf 45 566.5 Td (2. Si hay alg\372n contenedor parado, revisa docker compose logs --tail=50 y anota el mensaje) Tj ET
+BT /F1 9.6 Tf 45 552.8 Td (relevante. No borres datos ni reinstales sin analizarlo.) Tj ET
+BT /F1 9.6 Tf 45 539.1 Td () Tj ET
+BT /F1 9.6 Tf 45 525.4 Td (3. Abre el Dashboard con tu direcci\363n local y revisa los agentes registrados. Anota si el) Tj ET
+BT /F1 9.6 Tf 45 511.7 Td (agente de tu equipo est\341 activo y cu\341ndo comunic\363 por \372ltima vez.) Tj ET
+BT /F1 9.6 Tf 45 498 Td () Tj ET
+BT /F1 9.6 Tf 45 484.3 Td (Recorrido A - Si tienes pendiente la pr\341ctica anterior \(90 minutos\)) Tj ET
+BT /F1 9.6 Tf 45 470.6 Td () Tj ET
+BT /F1 9.6 Tf 45 456.90000000000003 Td (Termina la Pr\341ctica 0, instalaci\363n de Wazuh y la Pr\341ctica 1, despliegue del SOC. Revisa el) Tj ET
+BT /F1 9.6 Tf 45 443.20000000000005 Td (checklist de problemas habituales. Cuando tengas un agente comunicando, pasa al siguiente) Tj ET
+BT /F1 9.6 Tf 45 429.5 Td (apartado.) Tj ET
+BT /F1 9.6 Tf 45 415.8 Td () Tj ET
+BT /F1 9.6 Tf 45 402.1 Td (Recorrido B - Si ya est\341s al d\355a \(90 minutos\)) Tj ET
+BT /F1 9.6 Tf 45 388.40000000000003 Td () Tj ET
+BT /F1 9.6 Tf 45 374.70000000000005 Td (1. Identifica el agente desde el Dashboard y anota nombre, estado y \372ltima conexi\363n.) Tj ET
+BT /F1 9.6 Tf 45 361 Td () Tj ET
+BT /F1 9.6 Tf 45 347.3 Td (2. Genera un intento de autenticaci\363n fallida solo con una cuenta de prueba propia.) Tj ET
+BT /F1 9.6 Tf 45 333.6 Td (Registra la hora exacta.) Tj ET
+BT /F1 9.6 Tf 45 319.90000000000003 Td () Tj ET
+BT /F1 9.6 Tf 45 306.20000000000005 Td (3. Busca el registro o alerta en Wazuh filtrando por agente y hora. Si no aparece,) Tj ET
+BT /F1 9.6 Tf 45 292.5 Td (comprueba la fuente de registros y explica la posible causa; no inventes ninguna alerta.) Tj ET
+BT /F1 9.6 Tf 45 278.8 Td () Tj ET
+BT /F1 9.6 Tf 45 265.1 Td (4. Realiza la actividad ya publicada de FIM y an\341lisis. Modifica \372nicamente un archivo de) Tj ET
+BT /F1 9.6 Tf 45 251.39999999999998 Td (prueba en una ruta supervisada. Comprueba la periodicidad de FIM antes de concluir que no) Tj ET
+BT /F1 9.6 Tf 45 237.70000000000005 Td (funciona.) Tj ET
+BT /F1 9.6 Tf 45 224 Td () Tj ET
+BT /F1 9.6 Tf 45 210.30000000000007 Td (Investigaci\363n y entrega \(120 minutos\)) Tj ET
+BT /F1 9.6 Tf 45 196.60000000000002 Td () Tj ET
+BT /F1 9.6 Tf 45 182.89999999999998 Td (Quiero un informe breve que incluya: estado de Docker, estado del agente, una tabla con) Tj ET
+BT /F1 9.6 Tf 45 169.20000000000005 Td (hora / equipo / tipo de evento / evidencia / interpretaci\363n, dos capturas propias sin) Tj ET
+BT /F1 9.6 Tf 45 155.5 Td (credenciales, los problemas encontrados y una medida de mejora. Si no consigues generar) Tj ET
+BT /F1 9.6 Tf 45 141.80000000000007 Td (una alerta, documenta qu\351 revisaste y qu\351 prueba har\355as despu\351s.) Tj ET
+BT /F1 9.6 Tf 45 128.10000000000002 Td () Tj ET
+BT /F1 9.6 Tf 45 114.40000000000009 Td (Antes de irte: comprueba que no has publicado puertos vulnerables a la red del centro. No) Tj ET
+BT /F1 9.6 Tf 45 100.70000000000005 Td (copies contrase\361as, tokens ni datos de compa\361eros a GitHub. Trabajamos con sistemas) Tj ET
+BT /F1 9.6 Tf 45 87 Td (autorizados y cada uno con su propio laboratorio.) Tj ET
+BT /F1 9 Tf 45 38 Td (CIPFP Cheste - Curso 2026-2027 - Pagina 1 de 2) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 200 >>
+stream
+BT /F1 15 Tf 45 802 Td (WAZUH - PRACTICA DEL 28/10/2026) Tj ET
+0.75 w 45 789 m 548 789 l S
+BT /F1 9.6 Tf 45 772 Td () Tj ET
+BT /F1 9 Tf 45 38 Td (CIPFP Cheste - Curso 2026-2027 - Pagina 2 de 2) Tj ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000004979 00000 n 
+0000005105 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+5355
+%%EOF
