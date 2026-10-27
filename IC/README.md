@@ -14,6 +14,10 @@ Reglas Sigma y playbooks del SOC: [../SOC/plataforma/](../SOC/plataforma/).
 
 Mapa de qué práctica cubre cada parte del temario: [MAPA-PRACTICA-TEORIA.html](practicas/MAPA-PRACTICA-TEORIA.html).
 
+## Kahoot semanal
+
+- [Kahoot de repaso — semana del 28 de octubre: Wazuh y agentes](kahoot/INDEX.md). El enlace directo a la partida aparecerá cuando se publique en Kahoot.
+
 ## Temario
 
 - [Manual del módulo](MANUAL-ALUMNADO.pdf)
