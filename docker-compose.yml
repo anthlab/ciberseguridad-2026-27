@@ -16,8 +16,8 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - CONTENT_DIR=/content
-      - SECRET_KEY=${SECRET_KEY:-changeme-set-in-production-32chars!}
-      - ACCESS_CODE=${ACCESS_CODE:-pps2025}
+      - SECRET_KEY=${SECRET_KEY:?Define SECRET_KEY in .env}
+      - ACCESS_CODE=${ACCESS_CODE:?Define ACCESS_CODE in .env}
       - SESSION_TTL=86400
     networks:
       - cursopps
@@ -69,7 +69,7 @@ services:
     container_name: cursopps-frontend
     restart: unless-stopped
     ports:
-      - "${PORT:-8088}:80"
+      - "127.0.0.1:${PORT:-8088}:80"
     depends_on:
       backend:
         condition: service_healthy
