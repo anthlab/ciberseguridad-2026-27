@@ -1,0 +1,18 @@
+<!--
+  Decodificador de eventos de seguridad física del PACS de xest (IC · UT4).
+  Instalar en:  /var/ossec/etc/decoders/local_decoder.xml  (append)
+  Formato de log de entrada (program_name = xestpacs), clave=valor:
+    event=<tipo> zone=<zona> asset=<activo> actor=<persona|UNKNOWN> result=<ok|deny|unknown|alarm> out_of_hours=<yes|no>
+  Recargar:  /var/ossec/bin/wazuh-control restart
+  Probar:    /var/ossec/bin/wazuh-logtest   (pega una línea del log)
+-->
+<decoder name="xestpacs">
+  <program_name>xestpacs</program_name>
+</decoder>
+
+<decoder name="xestpacs-campos">
+  <parent>xestpacs</parent>
+  <type>pcre2</type>
+  <regex>event=(\S+) zone=(\S+) asset=(\S+) actor=(\S+) result=(\S+) out_of_hours=(\S+)</regex>
+  <order>event,zone,asset,actor,result,out_of_hours</order>
+</decoder>

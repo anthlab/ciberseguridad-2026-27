@@ -1,0 +1,28 @@
+{
+  "_comment_didactico": "Perfil seccomp para PPS UT2. Enfoque DIDÁCTICO: por defecto permite (SCMP_ACT_ALLOW) y bloquea explícitamente un conjunto de syscalls peligrosas, de modo que 'whoami'/'id' funcionan pero 'mount' es rechazado y se ve el concepto sin la fragilidad de una allowlist incompleta. EN PRODUCCIÓN el criterio se invierte: defaultAction SCMP_ACT_ERRNO (denegar por defecto) + allowlist mínima, como hace el perfil por defecto de Docker. Comentar esto en clase.",
+  "defaultAction": "SCMP_ACT_ALLOW",
+  "archMap": [
+    { "architecture": "SCMP_ARCH_X86_64", "subArchitectures": ["SCMP_ARCH_X86", "SCMP_ARCH_X32"] }
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "mount",
+        "umount2",
+        "pivot_root",
+        "chroot",
+        "reboot",
+        "swapon",
+        "swapoff",
+        "init_module",
+        "finit_module",
+        "delete_module",
+        "kexec_load",
+        "ptrace"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "errnoRet": 1,
+      "comment": "Bloqueadas: montaje, cambio de raíz, carga de módulos de kernel, depuración de otros procesos. Demostrar en clase que 'mount' da 'Operation not permitted'."
+    }
+  ]
+}

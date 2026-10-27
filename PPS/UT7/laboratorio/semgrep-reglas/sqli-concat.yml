@@ -1,0 +1,24 @@
+# Regla Semgrep PROPIA del curso.
+# Nace de un bug real visto en UT4: consultas SQL construidas con concatenación o
+# f-strings a partir de datos de entrada. Semgrep, con esta regla, caza exactamente
+# ese patrón en cualquier fichero del repositorio, antes de que llegue a producción.
+#
+# Uso:  semgrep --config semgrep-reglas/sqli-concat.yml portal-mini/
+rules:
+  - id: sqli-concatenacion-cadena
+    languages: [python]
+    severity: ERROR
+    message: >
+      Consulta SQL construida por concatenación o f-string a partir de una variable.
+      Esto es inyección SQL (CWE-89). Usa consultas parametrizadas: pasa los valores
+      como segundo argumento de execute() con marcadores (?, %s), nunca dentro de la cadena.
+    metadata:
+      owasp: "A03:2021 - Injection"
+      cwe: "CWE-89: SQL Injection"
+      origen: "PPS UT4 — bug del portal SOC"
+    patterns:
+      - pattern-either:
+          - pattern: $CUR.execute("..." + $X)
+          - pattern: $CUR.execute("..." % $X)
+          - pattern: $CUR.execute($X + "...")
+          - pattern: $CUR.execute(f"...")

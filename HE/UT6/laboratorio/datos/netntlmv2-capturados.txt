@@ -1,0 +1,13 @@
+# NetNTLMv2 capturados por Responder en el segmento de laboratorio (SINTÉTICOS).
+# Formato hashcat -m 5600 :  usuario::DOMINIO:serverchallenge:NTproofstr:blob
+# Datos INVENTADOS para docencia (ninguna persona real). Se cifran/destruyen tras la práctica.
+#
+# Puente a UT7: este mismo fichero es la entrada de HE-E13 (crackeo con hashcat/john).
+# Contraseñas plantadas (para verificar el crackeo en UT7, NO se entrega al alumnado):
+#   jdoe   -> Verano2026!      (débil: estación + año + símbolo)
+#   asanz  -> Xest.2026        (débil: patrón previsible)
+#   mruiz  -> C0rrecto-Caballo-Bateria-Grapa   (fuerte: passphrase larga -> NO cae en tiempo de clase)
+#
+jdoe::XEST:1122334455667788:6e2f0a1b3c4d5e6f7a8b9c0d1e2f3a4b:0101000000000000c0653150de09d20112a0b3c4d5e6f7080000000002001200580045005300540001001200460049004c00450053
+asanz::XEST:1122334455667788:9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d:0101000000000000a1b2c3d4e5f60718293a4b5c6d7e8f90000000000200120058004500530054002d004c0041004200
+mruiz::XEST:1122334455667788:0f1e2d3c4b5a69788796a5b4c3d2e1f0:0101000000000000112233445566778899aabbccddeeff00000000000200120058004500530054002d004c0041004200

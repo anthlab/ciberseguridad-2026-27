@@ -1,0 +1,47 @@
+[
+  {
+    "fuzzer": "original",
+    "domain": "xest.local",
+    "dns_a": ["10.10.10.10"],
+    "dns_mx": ["correo.xest.local"],
+    "dns_ns": ["ns1.xest.local"]
+  },
+  {
+    "fuzzer": "repetition",
+    "domain": "xesst.local",
+    "dns_a": ["185.199.108.153"],
+    "dns_mx": ["mail.xesst.local"],
+    "dns_ns": ["ns1.parking-cloud.example"]
+  },
+  {
+    "fuzzer": "insertion",
+    "domain": "xestt.local",
+    "dns_a": ["45.83.220.14"],
+    "dns_mx": ["mx1.xestt.local"],
+    "dns_ns": ["dns1.xestt.local"]
+  },
+  {
+    "fuzzer": "hyphenation",
+    "domain": "xest-soc.local",
+    "dns_a": ["10.10.10.66"],
+    "dns_ns": ["ns1.xest-soc.local"]
+  },
+  {
+    "fuzzer": "homoglyph",
+    "domain": "x3st.local",
+    "dns_a": ["199.59.243.222"],
+    "dns_ns": ["ns1.sedoparking.example"]
+  },
+  {
+    "fuzzer": "transposition",
+    "domain": "xets.local"
+  },
+  {
+    "fuzzer": "replacement",
+    "domain": "xesr.local"
+  },
+  {
+    "fuzzer": "various",
+    "domain": "xest.locol"
+  }
+]

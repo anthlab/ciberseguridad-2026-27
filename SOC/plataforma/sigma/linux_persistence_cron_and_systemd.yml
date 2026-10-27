@@ -1,0 +1,38 @@
+title: Persistencia sospechosa vía cron o unidad systemd
+id: 5c1a0f10-6a4a-4e6f-8f2d-b2e0f8a8f002
+status: experimental
+description: |
+  Detecta creación o modificación de tareas cron y unidades systemd
+  con rutas ocultas (/tmp, /dev/shm, /var/tmp) o binarios con nombres
+  ofuscados de una sola letra o dos.
+author: SOC de xest
+date: 2026/07/19
+references:
+  - https://attack.mitre.org/techniques/T1053/003/
+  - https://attack.mitre.org/techniques/T1543/002/
+tags:
+  - attack.persistence
+  - attack.t1053.003
+  - attack.t1543.002
+logsource:
+  product: linux
+  category: file_event
+detection:
+  cron_paths:
+    TargetFilename|startswith:
+      - '/etc/cron.d/'
+      - '/etc/cron.hourly/'
+      - '/etc/cron.daily/'
+      - '/etc/cron.weekly/'
+      - '/var/spool/cron/'
+  systemd_paths:
+    TargetFilename|startswith:
+      - '/etc/systemd/system/'
+      - '/lib/systemd/system/'
+      - '/usr/lib/systemd/system/'
+  suspicious_hint:
+    TargetFilename|re: '(?i)(/tmp/|/dev/shm/|/var/tmp/|/\.\w{1,3}\.sh$|/[a-z0-9]{1,2}\.service$)'
+  condition: (cron_paths or systemd_paths) and suspicious_hint
+falsepositives:
+  - Instaladores puntuales que colocan artefactos temporales
+level: high

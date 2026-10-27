@@ -1,0 +1,52 @@
+<!--
+  wazuh-wifi-rules.xml — Regla de detección de referencia para HE-E6 (NO DISTRIBUIR).
+  Es "la regla que le falta al SOC" que los alumnos deben razonar. Correlaciona eventos
+  de un sensor Wi-Fi (Kismet/nzyme) reenviados a Wazuh vía syslog.
+
+  Requisito previo (la parte difícil = tener la FUENTE):
+    - Un WIDS (Kismet o nzyme) escuchando el espectro con un adaptador en modo monitor.
+    - Sus alertas reenviadas a Wazuh (syslog / archivo monitorizado en ossec.conf).
+
+  Sin ese sensor, estas reglas nunca disparan: ESE es el hallazgo de HE-E6.
+
+  Instalación de referencia (entorno de xest):
+    - Copiar a /var/ossec/etc/rules/local_rules.xml (o incluir el fichero).
+    - reiniciar wazuh-manager.
+  IDs 100800-100811 en el rango de reglas locales (>100000).
+-->
+<group name="wireless,wids,">
+
+  <!-- Regla base: parsea una alerta de deauth reenviada por el sensor Kismet.
+       Ajustar <match> al formato real de tu integración syslog de Kismet. -->
+  <rule id="100800" level="5">
+    <decoded_as>json</decoded_as>
+    <field name="kismet.alert.class">DEAUTHFLOOD</field>
+    <description>WIDS: trama de desautenticación detectada por el sensor Wi-Fi.</description>
+    <mitre>
+      <id>T1498</id>   <!-- Network Denial of Service -->
+    </mitre>
+  </rule>
+
+  <!-- Regla de correlación: >30 eventos de deauth en 10 s -> flood (posible ataque). -->
+  <rule id="100810" level="10" frequency="30" timeframe="10">
+    <if_matched_sid>100800</if_matched_sid>
+    <description>WIDS: posible DEAUTH FLOOD (&gt;30 tramas/10s) contra la Wi-Fi del laboratorio.</description>
+    <group>attack,dos,</group>
+    <mitre>
+      <id>T1498</id>
+    </mitre>
+  </rule>
+
+  <!-- Rogue AP / evil twin: el sensor ve un BSSID nuevo anunciando el SSID xest-lab. -->
+  <rule id="100811" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="kismet.alert.class">APSPOOF</field>
+    <field name="kismet.alert.ssid">xest-lab</field>
+    <description>WIDS: posible ROGUE AP / evil twin suplantando el SSID xest-lab.</description>
+    <group>attack,mitm,</group>
+    <mitre>
+      <id>T1557</id>   <!-- Adversary-in-the-Middle -->
+    </mitre>
+  </rule>
+
+</group>

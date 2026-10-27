@@ -1,0 +1,38 @@
+title: Reverse shell candidata en Linux (bash/nc/socat)
+id: 5c1a0f10-6a4a-4e6f-8f2d-b2e0f8a8f001
+status: experimental
+description: |
+  Detecta ejecuciones de bash, nc o socat con patrones típicos de
+  reverse shell contra un host y puerto. Alta señal / bajo ruido
+  cuando el patrón `/dev/tcp/` está presente. Ver los tres selectors
+  para las variantes más habituales.
+author: SOC de xest
+date: 2026/07/19
+references:
+  - https://attack.mitre.org/techniques/T1059/004/
+  - https://gtfobins.github.io/gtfobins/bash/
+tags:
+  - attack.execution
+  - attack.t1059.004
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  bash_devtcp:
+    CommandLine|contains:
+      - '/dev/tcp/'
+      - '/dev/udp/'
+  nc_shell:
+    CommandLine|re:
+      - '(?i)\bnc(at)?\b.*(-e|--exec|-c|\|).*(bash|sh)'
+      - '(?i)\bbusybox\b.*(nc|netcat)'
+  socat_shell:
+    CommandLine|contains:
+      - 'socat exec'
+      - 'socat OPEN'
+      - 'EXEC:''bash'
+  condition: bash_devtcp or nc_shell or socat_shell
+falsepositives:
+  - Herramientas de administración remota configuradas explícitamente
+  - Simulaciones de pentest autorizadas
+level: high

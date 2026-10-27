@@ -1,0 +1,59 @@
+{
+  "_comment_didactico": "SOLUCIÓN del reto de UT2 (NO DISTRIBUIR). Perfil seccomp de PRODUCCIÓN: deny-by-default (defaultAction SCMP_ACT_ERRNO) + allowlist mínima. Es el criterio inverso al de perfil-restrictivo.json (que era una deny-list didáctica). Aquí, TODO lo que no esté en la lista se rechaza con EPERM. Esta allowlist es un superconjunto seguro suficiente para 'id'/'whoami' sobre alpine (musl). El METODO para construirla es iterativo: arrancar con una lista corta, leer en el error la syscall que el kernel mata, añadirla, repetir hasta que el binario corra. Ver SOLUCION-seccomp.md.",
+  "defaultAction": "SCMP_ACT_ERRNO",
+  "defaultErrnoRet": 1,
+  "archMap": [
+    { "architecture": "SCMP_ARCH_X86_64", "subArchitectures": ["SCMP_ARCH_X86", "SCMP_ARCH_X32"] }
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "execve",
+        "brk",
+        "arch_prctl",
+        "set_tid_address",
+        "set_robust_list",
+        "rseq",
+        "mmap",
+        "mprotect",
+        "munmap",
+        "prlimit64",
+        "getrandom",
+        "readlinkat",
+        "readlink",
+        "openat",
+        "open",
+        "read",
+        "pread64",
+        "close",
+        "fstat",
+        "newfstatat",
+        "statx",
+        "lseek",
+        "write",
+        "writev",
+        "geteuid",
+        "getuid",
+        "getegid",
+        "getgid",
+        "getgroups",
+        "getpid",
+        "ioctl",
+        "fcntl",
+        "uname",
+        "faccessat",
+        "faccessat2",
+        "access",
+        "futex",
+        "sysinfo",
+        "exit",
+        "exit_group",
+        "rt_sigaction",
+        "rt_sigprocmask",
+        "sigaltstack"
+      ],
+      "action": "SCMP_ACT_ALLOW",
+      "comment": "Conjunto mínimo para que un applet de busybox (id/whoami) arranque en musl, lea /etc/passwd y /etc/group y escriba a stdout. Todo lo demás -incluidos mount, chroot, ptrace, socket, execve de un shell interactivo con red...- queda denegado por defaultAction."
+    }
+  ]
+}

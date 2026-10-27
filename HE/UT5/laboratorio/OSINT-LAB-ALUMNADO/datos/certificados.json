@@ -1,0 +1,16 @@
+[
+  {
+    "id": "C01",
+    "name_value": "cartografia.xest.example\n*.xest.example",
+    "not_before": "2025-01-01",
+    "not_after": "2025-12-31",
+    "tipo": "SIMULACION"
+  },
+  {
+    "id": "C02",
+    "name_value": "cartografia.xest.example\nforo.xest.example",
+    "not_before": "2026-01-01",
+    "not_after": "2026-12-31",
+    "tipo": "SIMULACION"
+  }
+]

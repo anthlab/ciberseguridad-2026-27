@@ -1,0 +1,48 @@
+# WAF ModSecurity + OWASP CRS por DELANTE del portal SOC — PPS-E9 (Parte C).
+#
+# Levanta un proxy inverso con ModSecurity y el OWASP Core Rule Set delante del
+# contenedor `portal-soc` de los objetivos del aula. Empieza en DetectionOnly
+# (solo registra) para poder revisar el log, encontrar el falso positivo y
+# ajustar la regla ANTES de pasar a bloqueo real.
+#
+# Requisitos:
+#   - Los objetivos del aula ya levantados:
+#       cd ~/docencia/2026-2027/comun/entornos/objetivos && docker compose up -d
+#     Eso crea la red `xest-objetivos_default` y el contenedor `portal-soc`.
+#   - Levantar el WAF:
+#       docker compose -f docker-compose.waf.yml up -d
+#   - Probar a través del WAF:  http://localhost:8088/   (o https://localhost:8443/)
+#
+# Solo VLAN aislada de xest. No exponer a Internet.
+name: xest-waf
+
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    container_name: portal-waf
+    ports:
+      - "8088:8080"     # HTTP a través del WAF
+      - "8443:8443"     # HTTPS a través del WAF (certificado autofirmado de la imagen)
+    environment:
+      # El backend es el portal SOC de partida (nginx:80 dentro de su red).
+      BACKEND: "http://portal-soc:80"
+      # Primero DetectionOnly: registra pero NO bloquea. Tras revisar el log y
+      # ajustar el falso positivo, cambiar a "On" y volver a levantar.
+      MODSEC_RULE_ENGINE: "DetectionOnly"
+      # Nivel de paranoia del CRS: 1 = base (pocos falsos positivos), sube a 2-4
+      # a medida que afinas. Empezar en 1.
+      PARANOIA: "1"
+      # Auditoría a stdout para leerla con `docker logs -f portal-waf`.
+      MODSEC_AUDIT_LOG: "/dev/stdout"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+    volumes:
+      # Ajustes propios (exclusiones acotadas del falso positivo). Ver modsec/tuning.conf.
+      - ./modsec/tuning.conf:/etc/modsecurity.d/tuning.conf:ro
+    networks:
+      - objetivos
+
+networks:
+  # Reutiliza la red que crea el docker-compose de los objetivos del aula.
+  objetivos:
+    external: true
+    name: xest-objetivos_default

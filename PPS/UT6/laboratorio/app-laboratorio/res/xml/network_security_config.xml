@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Configuración de seguridad de red de NotasXest — VULNERABLE (PPS · UT6).
+
+  Dos fallos deliberados:
+    - cleartextTrafficPermitted="true": permite HTTP en claro (necesario aquí solo para
+      que el laboratorio "salga" en clase; en producción sería un fallo grave).
+    - trust-anchors incluye "user": confía en las CA que instale el usuario, de modo que
+      el CA de mitmproxy es aceptado y el tráfico TLS se puede interceptar. Una app bien
+      configurada NO confía en CA de usuario para su dominio.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">xest.local</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

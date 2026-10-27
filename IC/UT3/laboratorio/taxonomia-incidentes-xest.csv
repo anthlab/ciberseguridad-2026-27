@@ -1,0 +1,13 @@
+id;fecha;categoria_enisa;subtipo_enisa;categoria_ccn_817;peligrosidad_ccn;activo_afectado;fuente_deteccion;sensor;tecnica_attack;descripcion
+INC-2026-001;2026-09-14;Malicious Code;Infection;Código dañino;ALTO;WS-CONTA-04 (Windows);Endpoint;Wazuh (Sysmon);T1059.001;PowerShell con -EncodedCommand ejecutado por un usuario de contabilidad tras abrir un adjunto
+INC-2026-002;2026-09-15;Intrusion Attempts;Exploitation of vulnerability;Intento de intrusión;MEDIO;portal-soc.xest.local;Aplicación;Suricata + Wazuh;T1190;Ráfaga de peticiones a rutas de administración del portal (fuzzing de directorios)
+INC-2026-003;2026-09-16;Intrusion;Privileged account compromise;Intrusión;CRÍTICO;SRV-WEB-01 (Linux);Endpoint;Wazuh;T1059.004;Reverse shell bash /dev/tcp saliente desde el servidor web hacia un host de la VLAN
+INC-2026-004;2026-09-16;Availability;DoS;Disponibilidad;ALTO;juice.xest.local;Red;Suricata;T1499;Pico de conexiones SYN contra el puerto 3000 que degrada el servicio
+INC-2026-005;2026-09-17;Information Gathering;Scanning;Recopilación de información;BAJO;VLAN 10.10.10.0/24;Red;Suricata;T1046;Barrido de puertos nmap desde una estación no inventariada
+INC-2026-006;2026-09-18;Fraud;Phishing;Fraude;MEDIO;buzon-rrhh@xest.local;Aplicación;Correo/GoPhish;T1566.002;Enlace de phishing dirigido a RR. HH. suplantando el portal de nóminas
+INC-2026-007;2026-09-19;Malicious Code;C2;Código dañino;ALTO;WS-DISENO-02 (Linux);Red;Suricata;T1071.004;Volumen anómalo de consultas DNS TXT compatible con canal encubierto de C2
+INC-2026-008;2026-09-20;Intrusion;Application compromise;Intrusión;ALTO;SRV-WEB-01 (Linux);Endpoint;Wazuh (FIM);T1053.003;Tarea cron nueva en /etc/cron.d ejecutando un binario oculto en /tmp
+INC-2026-009;2026-09-21;Information Content Security;Unauthorised access;Acceso no autorizado;CRÍTICO;cuenta cloud maria.gil;Identidad;Logs de identidad;T1078.004;Dos autenticaciones exitosas ES->JP en 20 minutos (viaje imposible)
+INC-2026-010;2026-09-22;Information Content Security;Unauthorised modification;Acceso no autorizado;ALTO;SRV-WEB-01 (Linux);Endpoint;Wazuh;T1552.001;Lectura de /etc/shadow y ~/.ssh/id_rsa por un proceso interactivo
+INC-2026-011;2026-09-23;Abusive Content;Spam;Contenido abusivo;BAJO;pasarela-correo;Aplicación;Logs de la app;T1114;Envío masivo saliente desde una cuenta comprometida (spam)
+INC-2026-012;2026-09-24;Fraud;Unauthorized use of resources;Fraude;MEDIO;SRV-WEB-01 (Linux);Endpoint;Wazuh;T1496;Proceso de minería de criptomoneda consumiendo el 100 % de CPU de madrugada

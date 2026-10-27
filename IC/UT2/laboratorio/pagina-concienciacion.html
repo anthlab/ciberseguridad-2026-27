@@ -1,0 +1,44 @@
+<!--
+  Página de revelación del simulacro — IC UT2 (IC-E3).
+  Se sube a GoPhish como una segunda Landing Page y se pone en el campo "Redirect to" de la
+  primera, de modo que quien envía el formulario aterriza aquí y aprende, sin humillación.
+  También sirve como pieza del kit de materiales (mensaje en positivo, sin culpabilizar).
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Esto era un simulacro · Grupo xest</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#0b1220;color:#e6edf3;margin:0;}
+  .caja{max-width:640px;margin:50px auto;background:#111a2b;border-radius:10px;padding:34px;}
+  h1{color:#bb9af7;margin-top:0;}
+  .ok{color:#9ece6a;font-weight:bold;}
+  ul{line-height:1.7;}
+  .cta{background:#bb9af7;color:#0b1220;font-weight:bold;padding:10px 16px;border-radius:6px;
+       display:inline-block;text-decoration:none;margin-top:14px;}
+</style>
+</head>
+<body>
+  <div class="caja">
+    <h1>Esto era un simulacro de phishing</h1>
+    <p>No ha pasado nada malo y <span class="ok">no estás en ningún lío</span>. Este correo lo
+    ha enviado el equipo de seguridad para entrenar entre todos la detección de fraudes.</p>
+
+    <p><strong>Señales que delataban el engaño:</strong></p>
+    <ul>
+      <li>El remitente era <code>xest-rrhh.com</code>, no un dominio interno de xest.</li>
+      <li>Metía prisa y amenazaba con bloquear tu acceso ("antes de las 14:00").</li>
+      <li>El enlace real no coincidía con el texto del botón.</li>
+      <li>Pedía tu usuario y contraseña en una web externa.</li>
+    </ul>
+
+    <p><strong>Qué hacer la próxima vez:</strong> no hagas clic, no introduzcas credenciales y
+    <span class="ok">reporta el correo al buzón <code>soc@xest.local</code></span>. Avisar
+    rápido es lo que permite frenar el ataque antes de que afecte a más gente.</p>
+
+    <a class="cta" href="#">He entendido cómo reportar</a>
+  </div>
+</body>
+</html>

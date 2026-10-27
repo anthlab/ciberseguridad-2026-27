@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  App de laboratorio "NotasXest" — deliberadamente vulnerable (PPS · UT6).
+  Es una simple app de notas. Fíjate en TODO lo que pide y permite sin necesitarlo.
+  NO publicar. Solo VLAN de aula.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xest.notaslab"
+    android:versionCode="3"
+    android:versionName="1.2">
+
+    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="28" />
+
+    <!-- Mínimo privilegio ROTO: una app de notas no necesita nada de esto -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:label="NotasXest"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <activity android:name=".LoginActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Actividad interna exportada sin protección: cualquier app la puede lanzar -->
+        <activity android:name=".NotasActivity" android:exported="true" />
+
+    </application>
+</manifest>

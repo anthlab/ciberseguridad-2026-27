@@ -1,0 +1,46 @@
+# Simulacro de phishing del laboratorio — IC UT2 (IC-E3)
+# GoPhish (motor del simulacro) + MailHog (servidor SMTP de captura: NO entrega a Internet).
+#
+# Uso:
+#   docker compose -f docker-compose-gophish.yml up -d
+#   docker compose -f docker-compose-gophish.yml ps
+#   docker compose -f docker-compose-gophish.yml logs gophish | grep -i "password"   # contraseña admin inicial
+#   docker compose -f docker-compose-gophish.yml down          # al terminar
+#
+# REGLA DE ORO (aula): esto SOLO se ejecuta en la VLAN aislada del laboratorio.
+# MailHog es un "sumidero": captura todo el correo y lo muestra en su web; nada sale al exterior.
+# Por eso el simulacro es seguro y no toca buzones reales de personas ajenas al ejercicio.
+name: xest-phishing-lab
+
+services:
+  # --- Motor del simulacro: panel de administración + servidor de aterrizaje (landing) ---
+  gophish:
+    image: gophish/gophish:v0.12.1        # versión fijada: reproducibilidad en clase
+    container_name: gophish
+    ports:
+      - "3333:3333"     # Panel de administración (HTTPS, certificado autofirmado -> el navegador avisa)
+      - "8080:80"       # Servidor de phishing / landing pages (HTTP)
+    volumes:
+      - ./gophish-config.json:/opt/gophish/config.json:ro
+      - gophish-db:/opt/gophish        # persiste la base de datos entre reinicios de clase
+    restart: unless-stopped
+
+  # --- Servidor SMTP de captura: recibe el correo del simulacro y lo muestra, sin entregarlo ---
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: mailhog
+    ports:
+      - "1025:1025"     # SMTP (aquí apunta el "Sending Profile" de GoPhish: host mailhog:1025)
+      - "8025:8025"     # Web de MailHog: aquí se ven los correos "enviados"
+    restart: unless-stopped
+
+volumes:
+  gophish-db:
+
+# Notas de despliegue:
+# - Sending Profile en GoPhish -> Host: mailhog:1025 ; SIN usuario/contraseña ; SIN TLS.
+# - En la campaña, el campo URL debe apuntar a http://<IP_DEL_HOST_DEL_AULA>:8080
+#   (no 'localhost': el enlace se abre desde el navegador del alumnado, no desde el contenedor).
+# - El seguimiento de "reportado" en producción requiere IMAP (GoPhish -> Reporting). MailHog no
+#   tiene IMAP; para la métrica de reporte en el aula usamos el dataset sintético del bloque de
+#   lectura crítica (metricas-simulacro-ejemplo.csv). El embudo enviado->abierto->clic sí es real.

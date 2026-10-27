@@ -1,0 +1,31 @@
+title: DNS tunneling candidato — volumen anómalo de TXT
+id: 5c1a0f10-6a4a-4e6f-8f2d-b2e0f8a8f004
+status: experimental
+description: |
+  Detecta un pico de queries DNS de tipo TXT contra un mismo dominio
+  desde un mismo origen, patrón común de DNS tunneling / exfiltración
+  covert-channel. Fuente esperada: eve.json de Suricata (dns event).
+author: SOC de xest
+date: 2026/07/19
+references:
+  - https://attack.mitre.org/techniques/T1071/004/
+  - https://attack.mitre.org/techniques/T1041/
+tags:
+  - attack.command_and_control
+  - attack.t1071.004
+  - attack.exfiltration
+  - attack.t1041
+logsource:
+  product: suricata
+  service: dns
+detection:
+  txt_queries:
+    dns.rrtype: 'TXT'
+  aggregation:
+    count(dns.rrname) by src_ip, dns.rrname: '> 50'
+    timeframe: '5m'
+  condition: txt_queries and aggregation
+falsepositives:
+  - Servicios legítimos que abusan de TXT (DKIM lookups masivos, ACME challenges)
+  - Certificados Let's Encrypt en despliegues automatizados
+level: high

@@ -1,0 +1,51 @@
+# Laboratorio de PIVOTAJE de xest — HE UT7 (RA4.c) · SOLO VLAN de aula aislada.
+# Dos redes: 'dmz' (la alcanza el atacante) e 'interna' (aislada, sin ruta desde el atacante).
+# El host 'pivote' está en AMBAS: es el sistema comprometido por el que se pivota.
+# 'interna-app' solo está en 'interna': el objetivo que hay que alcanzar tunelizando.
+#
+#   atacante(Kali) --[dmz]--> pivote --[interna]--> interna-app  (bandera)
+#
+# Levantar:   docker compose up -d --build   ·   docker compose ps
+# Parar:      docker compose down
+name: xest-pivote-lab
+
+services:
+  # Host comprometido: SSH abierto en la DMZ. Sus credenciales son las CRACKEADAS en HE-E13
+  # (svc-backup:Password1 — reutilización real de la contraseña del volcado AD).
+  pivote:
+    build: ./pivote
+    container_name: pivote
+    hostname: pivote
+    networks:
+      dmz:
+        ipv4_address: 172.31.10.10
+      interna:
+        ipv4_address: 172.31.20.10
+    ports:
+      - "2222:22"          # el atacante entra por aquí (DMZ). Simula el host expuesto.
+    restart: unless-stopped
+
+  # Objetivo interno: NO tiene puerto publicado ni está en 'dmz'. Solo se alcanza pivotando.
+  interna-app:
+    image: nginx:1.27-alpine
+    container_name: interna-app
+    hostname: interna-app
+    networks:
+      interna:
+        ipv4_address: 172.31.20.20
+    volumes:
+      - ./interna/html:/usr/share/nginx/html:ro
+    restart: unless-stopped
+
+networks:
+  dmz:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.10.0/24
+  interna:
+    driver: bridge
+    internal: true          # 'internal: true' = sin ruta al exterior: obliga a pivotar de verdad
+    ipam:
+      config:
+        - subnet: 172.31.20.0/24

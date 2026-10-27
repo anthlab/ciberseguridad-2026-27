@@ -1,0 +1,84 @@
+# Canalización de seguridad en modo BLOQUEO (PPS · UT7 · evidencia PPS-E13).
+#
+# Adaptada de ~/proyectos/proyectofinal/PPS/material/pipeline/ci-seguridad.yml
+# La diferencia clave es que aquí NINGÚN control usa `|| true` ni `soft-fail`:
+# un hallazgo (secreto, CVE crítico/alto, mala config, patrón SAST) ROMPE el build.
+# Con la rama principal protegida exigiendo este workflow en verde, un PR sucio
+# NO se puede fusionar.
+#
+# Colócalo en el repo del proyecto como: .github/workflows/ci-seguridad.yml
+name: PPS · Seguridad (bloquea)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  sast:
+    name: SAST — Semgrep
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Semgrep (OWASP + regla propia del curso)
+        run: |
+          python3 -m pip install semgrep
+          semgrep --config p/owasp-top-ten \
+                  --config PPS/UT7/laboratorio/semgrep-reglas/sqli-concat.yml \
+                  --sarif --output semgrep.sarif \
+                  --error                       # <-- hallazgo => exit 1 => build ROJO
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: sarif-semgrep, path: semgrep.sarif }
+
+  sca:
+    name: SCA — Trivy (dependencias)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trivy filesystem
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          format: sarif
+          output: trivy.sarif
+          severity: CRITICAL,HIGH
+          exit-code: '1'                        # <-- CRITICAL/HIGH => build ROJO
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: sarif-trivy, path: trivy.sarif }
+
+  secretos:
+    name: Secretos — gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }               # historial completo: escanea todos los commits
+      - name: gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz \
+            | tar -xz gitleaks
+          ./gitleaks detect --source . \
+              --report-format sarif --report-path gitleaks.sarif --redact
+          # gitleaks devuelve exit 1 si encuentra un secreto: build ROJO. No lo silenciamos.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: sarif-gitleaks, path: gitleaks.sarif }
+
+  iac:
+    name: IaC — Checkov
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkov (sin soft-fail => bloquea)
+        run: |
+          python3 -m pip install checkov
+          checkov -d . --output sarif --output-file-path .
+          # SIN `|| true` y SIN `--soft-fail`: un fallo de config => exit 1 => build ROJO.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: sarif-checkov, path: results.sarif }

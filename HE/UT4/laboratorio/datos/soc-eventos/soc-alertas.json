@@ -1,0 +1,7 @@
+[
+  {"ts":"2026-03-11T02:58:10","fuente":"kismet-wids","regla":"IEEE80211_DEAUTH_FLOOD","severidad":"media","bssid":"AA:BB:CC:11:22:33","descripcion":"Rafaga de tramas de desautenticacion (deauth) > 50/s en xest-lab"},
+  {"ts":"2026-03-11T02:58:12","fuente":"suricata","regla":"ET WIRELESS 802.11 Deauth Flood","severidad":"media","sid":2027001,"descripcion":"Posible ataque de desautenticacion en el segmento inalambrico"},
+  {"ts":"2026-03-11T02:59:44","fuente":"wazuh","regla":"5710","severidad":"baja","descripcion":"Multiples reconexiones de cliente wifi en ventana corta (posible handshake forzado)"},
+  {"ts":"2026-03-11T03:01:20","fuente":"kismet-wids","regla":"IEEE80211_ROGUE_AP","severidad":"alta","bssid":"AA:BB:CC:11:22:99","descripcion":"Punto de acceso no autorizado suplantando el SSID xest-lab (rogue AP / evil twin)"},
+  {"ts":"2026-03-11T03:04:37","fuente":"wazuh","regla":"5712","severidad":"baja","descripcion":"Nuevo cliente asociado al AP con SSID xest-lab desde MAC no inventariada"}
+]

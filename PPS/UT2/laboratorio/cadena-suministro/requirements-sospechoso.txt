@@ -1,0 +1,16 @@
+# requirements.txt del "portal SOC de xest" — lote SINTÉTICO para el ejercicio de UT2.
+# Contiene dependencias legítimas MEZCLADAS con typosquats inventados para la clase.
+# NINGUNO de los typosquats debe instalarse: son nombres de práctica, no paquetes reales
+# recomendados. Ejercicio: localizar los nombres sospechosos y justificar por qué.
+flask==3.0.3
+reqeusts==2.31.0
+urllib3==2.2.2
+PyYAML==6.0.2
+cryptografy==42.0.5
+python3-dateutil==2.9.0
+colourama==0.4.6
+numpy==2.0.1
+djanga==5.0.7
+beautifulsoup4==4.12.3
+gunicorn==22.0.0
+python-jwt==4.0.0

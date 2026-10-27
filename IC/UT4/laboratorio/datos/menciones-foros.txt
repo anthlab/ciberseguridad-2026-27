@@ -1,0 +1,10 @@
+# Extracto sintético de menciones (pastes, foros, canales) recogidas por el rastreador.
+# Formato: [fecha] fuente :: texto
+# NO contiene datos reales. Uso exclusivo en el aula.
+
+[2026-09-21] paste:pastebin/rXk9 :: "dump interno xest.local — rango 10.10.10.0/24, portal-soc en :8080, credenciales soporte@xest.local funcionan"
+[2026-09-19] foro:exploit.in/hilo-4471 :: "vendo acceso VPN empresa española (sector servicios) — dominio xest.local, VPN en vpn.xest.local, precio 400$"
+[2026-09-18] telegram:@accesos_es :: "alguien tiene interés en xesto muebles? tengo su catalogo de clientes"
+[2026-08-30] foro:reddit/r/sysadmin :: "montando jenkins en jenkins.xest.local, alguien sabe por que me sale expuesto en internet?"
+[2026-07-02] blog:medium/@randomdev :: "usamos la palabra 'test' en test.xest.local para el entorno de pruebas, nada critico"
+[2026-06-15] foro:foro-recetas.example :: "la receta de mi abuela lleva xesto de limon, buenisima"

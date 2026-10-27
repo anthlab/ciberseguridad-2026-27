@@ -1,0 +1,11 @@
+nombre,segmento,puesto,correo,exposicion,notas
+Ana Belloch,direccion,Directora General,direccion01@xest.local,alta,firma la política; objetivo de spear-phishing
+Ramón Ferrer,direccion,Director Financiero,direccion02@xest.local,alta,autoriza pagos; objetivo de fraude del CEO (BEC)
+Lucía Ortí,direccion,Directora de RRHH,direccion03@xest.local,alta,maneja datos personales del personal (art. 9 RGPD)
+Jordi Sales,tecnico,Administrador de sistemas,tecnico01@xest.local,media,credenciales privilegiadas; primer respondedor esperado
+Nerea Gil,tecnico,Desarrolladora backend,tecnico02@xest.local,media,acceso a repositorios y secretos
+Pau Miralles,tecnico,Técnico de soporte,tecnico03@xest.local,media,recibe muchas incidencias por correo; muy expuesto a suplantación de usuarios
+Sara Alonso,tecnico,Analista de datos,tecnico04@xest.local,media,acceso a bases de datos de negocio
+Marc Tena,administracion,Administrativo de compras,administracion01@xest.local,media,tramita facturas; objetivo de factura falsa
+Elena Ripoll,administracion,Recepción,administracion02@xest.local,baja,puerta de entrada telefónica y de correo
+Iván Bosch,administracion,Contabilidad,administracion03@xest.local,alta,acceso a banca electrónica

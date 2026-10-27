@@ -1,0 +1,77 @@
+site_name: Ciberseguridad 2026-2027
+site_description: CE Ciberseguridad · CIPFP Cheste · PPS, HE e IC
+site_author: José Picón
+site_url: https://jmpicon.github.io/curso-ciberseguridad-2026-27/
+repo_url: https://github.com/jmpicon/curso-ciberseguridad-2026-27
+repo_name: curso-ciberseguridad-2026-27
+edit_uri: ""
+docs_dir: docs
+site_dir: site
+use_directory_urls: false
+
+theme:
+  name: material
+  language: es
+  font: false
+  icon:
+    logo: material/shield-lock
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.path
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+plugins:
+  - search:
+      lang: es
+  - offline
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - assets/curso.css
+extra_javascript:
+  - assets/progreso.js
+
+validation:
+  links:
+    not_found: warn
+    anchors: ignore
+    absolute_links: ignore
+    unrecognized_links: ignore

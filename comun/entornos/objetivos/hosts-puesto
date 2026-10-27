@@ -1,0 +1,14 @@
+# Plantilla de /etc/hosts para trabajar con los objetivos en TU PROPIO PUESTO.
+# Es el modo por defecto del curso: docker-compose.yml publica Juice Shop, DVWA,
+# portal y bWAPP solo en 127.0.0.1, así que los nombres apuntan a tu Kali.
+#
+# El SOC NO va aquí: vive en el servidor del aula. Para soc.xest.local usa la línea
+# correspondiente de hosts-aula (o el DNS del laboratorio).
+#
+# Uso (dentro de Kali), solo si los nombres aún no existen:
+#   getent hosts juice.xest.local || sudo tee -a /etc/hosts < hosts-puesto
+#
+127.0.0.1   objetivo.xest.local portal-soc.xest.local
+127.0.0.1   juice.xest.local
+127.0.0.1   dvwa.xest.local
+127.0.0.1   bwapp.xest.local

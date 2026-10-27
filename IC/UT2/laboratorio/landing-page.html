@@ -1,0 +1,47 @@
+<!--
+  Página de aterrizaje del simulacro — IC UT2 (IC-E3). SIMULACRO DE LABORATORIO.
+  Se pega en GoPhish -> Landing Pages -> editor HTML.
+  Activar en GoPhish: "Capture Submitted Data" (para medir quién envía credenciales).
+  NO activar "Capture Passwords" en un simulacro real: no se necesita la contraseña para medir,
+  y almacenar contraseñas ajenas es innecesario y arriesgado. Aquí, al ser buzones de laboratorio,
+  se puede activar para la demostración; en producción, NUNCA.
+  Recomendado: en la campaña, "Redirect to" -> una página de concienciación que revele el simulacro.
+  El formulario usa method=post: GoPhish intercepta el envío y registra "Submitted Data".
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal de Nóminas · Grupo xest</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#eef2f7;margin:0;color:#222;}
+  .caja{max-width:360px;margin:60px auto;background:#fff;border-radius:8px;
+        box-shadow:0 2px 12px rgba(0,0,0,.12);overflow:hidden;}
+  .cab{background:#0a3d62;color:#fff;padding:18px 22px;font-size:18px;font-weight:bold;}
+  .cont{padding:24px 22px;}
+  label{display:block;font-size:13px;margin:12px 0 4px;color:#444;}
+  input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #ccc;border-radius:4px;}
+  button{width:100%;margin-top:20px;background:#e67e22;color:#fff;border:0;padding:12px;
+         font-size:15px;font-weight:bold;border-radius:4px;cursor:pointer;}
+  .pie{font-size:11px;color:#888;text-align:center;padding:14px;}
+</style>
+</head>
+<body>
+  <div class="caja">
+    <div class="cab">Portal de Nóminas · Grupo xest</div>
+    <div class="cont">
+      <p style="font-size:13px;color:#555;">Revalide sus credenciales corporativas para
+      mantener el acceso.</p>
+      <form method="post" action="">
+        <label for="usuario">Usuario corporativo</label>
+        <input type="text" id="usuario" name="usuario" autocomplete="username" required>
+        <label for="clave">Contraseña</label>
+        <input type="password" id="clave" name="clave" autocomplete="current-password" required>
+        <button type="submit">Verificar acceso</button>
+      </form>
+    </div>
+    <div class="pie">© Grupo xest · Recursos Humanos</div>
+  </div>
+</body>
+</html>

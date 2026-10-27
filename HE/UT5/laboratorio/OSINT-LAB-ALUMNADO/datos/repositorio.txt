@@ -1,0 +1,5 @@
+REPOSITORIO SINTÉTICO
+Autor declarado: kestrel_ova
+Perfil enlazado: foro.xest.example/perfil/p01
+Correo declarado en los commits: ova.kestrel@mail.xest.example
+La identidad de un autor de Git no está verificada por esta declaración.

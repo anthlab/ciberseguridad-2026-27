@@ -1,0 +1,15 @@
+Número de lista:
+URL del repositorio (si es privado, dar acceso al docente):
+Identificador del primer commit:
+Nombre de la rama creada:
+URL de la pull request fusionada (pendiente si trabajo offline):
+Qué hace commit y qué hace push:
+Qué es la imagen y qué es el contenedor:
+Puerto del equipo / puerto del contenedor:
+Nombre de la imagen v1 y v2:
+Qué vi al editar index.html sin reconstruir:
+Qué vi después de reconstruir y recrear:
+Qué cambia al hacer restart y qué no:
+Capturas: historial Git, PR, web v1/v2 y docker ps (sin credenciales).
+Revisión de un compañero (número de lista):
+Dudas para la próxima sesión:

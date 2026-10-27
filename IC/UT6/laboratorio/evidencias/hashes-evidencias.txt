@@ -1,0 +1,21 @@
+# Manifiesto de integridad de la bolsa de evidencias — IC UT6 (dataset de laboratorio)
+# Los hashes de a.ps1 son REALES (calculados sobre el fichero de esta carpeta):
+#   verificar con:  sha256sum -c hashes-evidencias.txt  (solo la linea de a.ps1)
+#
+# Los hashes marcados [IoC-LAB] corresponden a artefactos que NO se distribuyen como
+# binario (svchost32.exe, memoria.raw): son los valores documentados del laboratorio,
+# usados como Indicador de Compromiso. El volcado memoria.raw lo prepara el docente
+# (ver "Antes de entrar" del guion) y su hash se registra en la cadena de custodia.
+
+# --- Fichero real presente en esta carpeta ---
+73dba9b44ee2b37b666f078030e29d065b50168ef9b871ebcfc9320adba177ea  a.ps1
+
+# --- Artefactos del caso (IoC documentados del laboratorio) ---
+# svchost32.exe  (segundo estadio / implante)
+#   MD5     [IoC-LAB]  44d88612fea8a8f36de82e1278abb02f
+#   SHA1    [IoC-LAB]  3395856ce81f2b7382dee72602f798b642f14140
+#   SHA256  [IoC-LAB]  275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f
+# memoria.raw  (volcado RAM de WIN-XEST-ADM, lo genera el docente)
+#   SHA256  [pendiente: registrar el hash real tras la adquisicion en la cadena de custodia]
+# shell.php    (webshell en el portal)
+#   SHA256  [IoC-LAB]  9f2a5c7d1e8b3a460f5c2d9e7b1a4c6f8d0e2b4a6c8e0f2a4c6e8b0d2f4a6c8e0

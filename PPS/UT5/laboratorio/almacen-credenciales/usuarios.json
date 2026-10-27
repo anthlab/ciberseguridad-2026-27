@@ -1,0 +1,42 @@
+{
+  "ana": {
+    "hash": "df68f64ec5738ae8763372f8a6a9343e1778aef925f9ebf16902d86795226899",
+    "esquema": "sha256"
+  },
+  "luis": {
+    "hash": "19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd",
+    "esquema": "sha256"
+  },
+  "marta": {
+    "hash": "48486e1514e842346ff405b1e45f44059ae82619f2306f99d0940dcb386e91f7",
+    "esquema": "sha256"
+  },
+  "soc_admin": {
+    "hash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "esquema": "sha256"
+  },
+  "pedro": {
+    "hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "esquema": "sha256"
+  },
+  "noa": {
+    "hash": "02299019027bebc8002e054c184c22171e9c3d586b1362eaba11b6f3b900d945",
+    "esquema": "sha256"
+  },
+  "diego": {
+    "hash": "65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5",
+    "esquema": "sha256"
+  },
+  "sara": {
+    "hash": "1db859a53fc24353bfb8a82216b1fb6be642b8aaedaa1eedbefcd84067d998a3",
+    "esquema": "sha256"
+  },
+  "hugo": {
+    "hash": "ab147aa31d53e5cf4a711faf12aac550d36943a91f13890e3784bfef6a3cfc9f",
+    "esquema": "sha256"
+  },
+  "iker": {
+    "hash": "6ea09c25a7f1dcbd677077edaadfacdc41202e5be88e4ccf4c35207e343990bd",
+    "esquema": "sha256"
+  }
+}

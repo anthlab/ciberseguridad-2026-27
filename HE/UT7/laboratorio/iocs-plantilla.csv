@@ -1,0 +1,6 @@
+timestamp,host,tipo_ioc,indicador,mecanismo_attack,fuente,notas
+2026-01-15T10:32:04Z,pivote.xest.local,auth,svc-backup login SSH desde 172.31.10.0/24,T1078 Valid Accounts,/var/log/auth.log,credencial reutilizada del volcado NTLM
+2026-01-15T10:41:10Z,pivote.xest.local,file,/etc/cron.d/xest-backup,T1053.003 Cron,inotify/auditd,sha256=RELLENAR
+2026-01-15T10:41:11Z,pivote.xest.local,network,callback 172.31.10.1:9001 (beacon),T1071 C2,conexiones salientes,periodicidad 60s
+2026-01-15T10:45:00Z,pivote.xest.local,file,~svc-backup/.ssh/authorized_keys clave añadida,T1098.004 SSH Authorized Keys,fim,fingerprint=RELLENAR
+2026-01-15T10:47:22Z,pivote.xest.local,account,usuario sysupdate uid=1337,T1136 Create Account,/etc/passwd,cuenta oculta de servicio
