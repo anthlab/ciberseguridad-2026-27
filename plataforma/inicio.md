@@ -54,6 +54,12 @@ Chicos y chicas, aquí tenéis lo que vamos a trabajar estos dos días. Si tené
 
 Las instrucciones están pensadas para que podáis trabajar por vuestra cuenta, sin compartir credenciales ni actuar fuera del laboratorio autorizado.
 
+## Sigue tu progreso
+
+[Marcar los pasos completados de Wazuh y TECNORIBERA](docs/interactivo/progreso-laboratorios.html){ .md-button }
+
+El seguimiento se guarda únicamente en el navegador que utilices. No sustituye la entrega de los informes ni recoge notas.
+
 ## Empieza aquí
 
 1. [Primera sesión: terminal, Git y Docker](comun/PRIMERA-SESION.md)
