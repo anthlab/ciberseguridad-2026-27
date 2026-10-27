@@ -1,7 +1,16 @@
-# Hacking Ético · curso 2026-2027
+# Hacking Ético — curso 2026-2027
 
-Área de prácticas autorizadas del laboratorio SOC XEST. Preparar el temario, las rúbricas y los enunciados del alumnado a partir de los documentos actuales de Drive, con revisión previa de alcance y autorización.
+## Práctica 1: alcance de una auditoría autorizada
+Vamos a preparar el laboratorio SOC XEST y a documentar qué se puede comprobar antes de utilizar herramientas de reconocimiento.
 
-**Seguridad:** usar únicamente laboratorios propios, aislados y autorizados. Ninguna máquina vulnerable debe quedar accesible públicamente. No se incorporan credenciales, soluciones o configuraciones peligrosas del profesorado.
+1. Dibujad una red de prácticas con una estación de trabajo y un servidor de prueba. Usad direcciones de documentación como 192.0.2.0/24, sin asumir que existe esa red.
+2. Redactad las reglas del ejercicio: sistemas autorizados, actividades permitidas, horario y procedimiento para detener pruebas.
+3. Preparad un inventario de activos con función, responsable y puertos esperados.
+4. Diseñad una ficha de evidencia: fecha, objetivo autorizado, herramienta, observación y riesgo.
+5. Entregad en vuestra rama `alcance.md`, `inventario.md` y `evidencias.md`.
 
-Estado: carpeta creada; transferencia y clasificación de materiales de Drive pendiente de verificación.
+**Criterios de evaluación:** autorización y alcance 40 %, inventario 30 %, evidencias y claridad 30 %.
+
+**Seguridad:** ninguna máquina vulnerable debe publicarse en Internet. Usad únicamente sistemas aislados del laboratorio autorizados. No subáis credenciales, soluciones ni datos personales de compañeros.
+
+Los siguientes ejercicios se incorporarán después de validar las imágenes y la red de Docker.
