@@ -1,0 +1,19 @@
+﻿hostname,so,department,owner,criticality,group_wazuh,labels_extra,estado,fecha_alta
+DIR-NB-01,Windows,direccion,direccion.01,muy_alta,direccion,location=valencia-sede,planificado,
+DIR-NB-02,Windows,direccion,direccion.02,muy_alta,direccion,location=valencia-sede,planificado,
+FIN-PC-01,Windows,finanzas,finanzas.01,media,ofimatica,location=valencia-sede,planificado,
+FIN-PC-02,Windows,finanzas,finanzas.02,media,ofimatica,location=valencia-sede,planificado,
+FIN-PC-03,Windows,finanzas,finanzas.03,media,ofimatica,location=valencia-sede,planificado,
+RRH-PC-01,Windows,rrhh,rrhh.01,media,ofimatica,location=valencia-sede,planificado,
+RRH-PC-02,Windows,rrhh,rrhh.02,media,ofimatica,location=valencia-sede,planificado,
+COM-NB-01,Windows,comercial,comercial.01,media,ofimatica,location=valencia-sede,planificado,
+COM-NB-02,Windows,comercial,comercial.02,media,ofimatica,location=valencia-sede,planificado,
+COM-NB-03,Windows,comercial,comercial.03,media,ofimatica,location=valencia-sede,planificado,
+COM-NB-04,Windows,comercial,comercial.04,media,ofimatica,location=valencia-sede,planificado,
+OPE-PC-01,Windows,operaciones,operaciones.01,media,ofimatica,location=valencia-sede,planificado,
+OPE-PC-02,Windows,operaciones,operaciones.02,media,ofimatica,location=valencia-sede,planificado,
+OPE-PC-03,Windows,operaciones,operaciones.03,media,ofimatica,location=valencia-sede,planificado,
+DEV-NB-01,Ubuntu Server 24.04.5 LTS,desarrollo,desarrollo.01,alta,desarrollo,location=valencia-sede,desplegado,2026-10-21
+DEV-NB-02,Linux,desarrollo,desarrollo.02,alta,desarrollo,location=valencia-sede,planificado,
+IT-SRV-ERP,Ubuntu Server 24.04.5 LTS,it,it.erp,muy_alta,servidores,location=valencia-sede,desplegado,2026-10-21
+IT-SRV-FILE,Linux,it,it.fileserver,muy_alta,servidores,location=valencia-sede,planificado,
