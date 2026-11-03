@@ -7,7 +7,7 @@ CAMPOS = ["dni", "nombre", "email", "edad", "cuota"]
 
 def neutralizar(valor: str) -> str:
     """Evita que una hoja de cálculo interprete el texto como una fórmula."""
-    if valor.startswith("="):
+    if valor.startswith(("=", "+", "-", "@", "\t", "\r")):
         return "'" + valor
     return valor
 
