@@ -5,7 +5,7 @@ y la tienda le devolvió un precio NEGATIVO (le "regalamos" dinero).
 Tu trabajo: escribir primero el TEST DE REGRESIÓN que reproduce el fallo,
 verlo en rojo, corregir el código y verlo en verde.
 """
-
+import math
 
 def aplicar_descuento(precio: float, pct: float) -> float:
     """Aplica un descuento porcentual a un precio.
@@ -15,10 +15,11 @@ def aplicar_descuento(precio: float, pct: float) -> float:
       - 0 <= pct <= 100
     Un porcentaje fuera de rango debe RECHAZARSE (ValueError), no calcularse.
     """
-    if precio < 0:
-        raise ValueError("precio negativo")
+    if not math.isfinite(precio) or precio < 0:
+        raise ValueError("el precio debe ser finito y no negativo")
+    if not 0 <= pct <= 100:
+        raise ValueError("descuento fuera de rango")
     return round(precio * (1 - pct / 100), 2)
-
 
 def es_precio_valido(precio: float) -> bool:
     return precio >= 0

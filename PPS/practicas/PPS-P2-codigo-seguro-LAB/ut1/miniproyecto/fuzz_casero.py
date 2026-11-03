@@ -24,9 +24,7 @@ def valor_raro():
 
 
 def resultado_valido(precio, resultado):
-    # TODO (reto): ¿qué condiciones debe cumplir SIEMPRE un precio con descuento?
-    return resultado >= 0
-
+    return math.isfinite(resultado) and 0 <= resultado <= round(precio, 2)
 
 def main(intentos=20000):
     random.seed(2026)

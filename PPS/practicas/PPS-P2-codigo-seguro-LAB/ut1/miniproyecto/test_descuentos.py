@@ -19,5 +19,12 @@ def test_precio_negativo_se_rechaza():
     with pytest.raises(ValueError):
         aplicar_descuento(-10, 10)
 
+@pytest.mark.parametrize("pct", [150, -5])
+def test_regresion_incidencia_17(pct):
+    with pytest.raises(ValueError):
+        aplicar_descuento(100, pct)
 
+def test_rechaza_precio_nan():
+    with pytest.raises(ValueError):
+        aplicar_descuento(float("nan"), 0)
 # --- TU TEST DE REGRESIÓN (incidencia #17) va aquí debajo.
